@@ -1,7 +1,7 @@
 # NiSSo-Emmas-Small-Engines
  Fully functioning POS/Ordering system
  
- written in (mainly), C#, ASP.NET, Razor, Javascript, SQL.
+ written in (mainly), C#, ASP.NET, .NET Core, Razor, Javascript, SQL.
 
 Made for a team competition in last semester of college for best POS/Ordering system (won 1st place).
 
