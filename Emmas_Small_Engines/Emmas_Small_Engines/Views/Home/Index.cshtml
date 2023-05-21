@@ -1,0 +1,235 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+@{
+    if (!SignInManager.IsSignedIn(User))
+    {
+        <div class="d-flex flex-row rounded-top p-1 bg-light border mt-5 pt-5 gap-2">
+            <div class="col-auto  flex-grow-1">
+                <h6 class="display-6 ps-3">Emma's Small Engines</h6>
+            </div>
+            <div class="vr  align-self-center" style="height: 2.5rem"></div>
+            <div class="col-md-auto align-self-center">
+                <a title="Login" asp-area="Identity" asp-page="/Account/Login" class="btn me-4 btn-primary">Login</a>
+            </div>
+
+            
+        </div>
+
+        <div class="container p-3 pt-5 pb-5 bg-light border bg-gradient rounded-bottom">
+            
+
+            <div id="carouselExampleAutoplaying" class="carousel slide border border-dark" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="bg-image hover-overlay w-100" style="background-image: url('https://i5.walmartimages.com/asr/4725d479-099a-4938-99f9-3fdb3637bdc3_1.bfa92ce28325692b4b5206c6e67cc28b.jpeg?odnHeight=450&odnWidth=450&odnBg=ffffff');
+                             background-repeat: no-repeat; background-size:cover; height:600px;">
+                            <div class="mask text-white h-100" style="background-color: rgba(0,0,0,0.6);">
+                                <div class="d-flex flex-column text-white justify-content-center align-items-center h-100">
+                                    <h1 class="display-4 border-bottom border-white pb-3">High Quality Products</h1>
+
+                                    <span class="pt-3">Air Filters, Engines, Fuel Stabilizers and more!</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="bg-image w-100 rounded" style="background-image: url('https://cdn.aftonvilla.com/does_a_lawnmower_have_a_muffler.png');
+                             background-repeat: no-repeat;background-size:cover; height: 600px;">
+                            <div class="mask text-white text-center h-100" style="background-color: rgba(0,0,0,0.6);">
+                                <div class="d-flex flex-column text-white justify-content-center align-items-center h-100">
+                                    <h1 class="display-4 border-bottom border-white pb-3">Check out our Mufflers!</h1>
+
+                                    <span class="pt-3">Satisfaction Guaranteed.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="bg-image rounded w-100" style="background-image: url('https://blog.vantagecircle.com/content/images/2020/08/teamwork-and-team-building.png');
+                             background-repeat: no-repeat; background-size:cover; height: 600px;">
+                            <div class="mask text-white h-100" style="background-color: rgba(0,0,0,0.6);">
+                                <div class="d-flex flex-column text-white justify-content-center align-items-center h-100">
+                                    <h1 class="display-4 border-bottom border-white pb-3">Emmas' Small Engines</h1>
+
+                                    <span class="pt-3">The best products, guaranteed.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="d-flex flex-row rounded-top p-1 bg-light border mt-5 pt-5 gap-2">
+            <div class="col-auto  flex-grow-1">
+                <h5 class="display-6 ps-3">Home</h5>
+            </div>
+            <div class="vr  align-self-center" style="height: 2.5rem"></div>
+            <div class="col-md-auto align-self-center">
+                <form asp-controller="Home" asp-action="Logout" method="post">
+                    <button type="submit" class="btn btn-outline-danger me-4">Logout</button>
+                </form>
+            </div>
+
+
+        </div>
+        <div class="container p-3 pt-5 pb-5 d-flex shadow w-100 bg-light justify-content-center border bg-gradient rounded-bottom">
+            @{
+                if(Context.User.IsInRole("Sales")){
+                    <a asp-controller="POS" asp-action="Index" class="btn  mw-100 " style="height: 600px; width: 350px;">
+                        <div class="card shadow text-bg-dark bg-gradient w-100 h-100">
+                            <img src="https://www.bankrate.com/2019/09/25140436/SurveyLendingMoneyEndsBadlyForAmericans.png" class="card-img-top" style="height: 350px;" alt="...">
+                            <div class="card-body" style="opacity: 0.6;">
+                                <h6 class="card-title display-6 text-nowrap pb-3">Sales</h6>
+                                <hr />
+                                <span class="pt-3 card-text">Our Success is your satisfaction</span>
+                            </div>
+                        </div>                           
+                        <!--<div class="bg-image bg-light  hover-overlay w-100" style="background-image: url('https://www.bankrate.com/2019/09/25140436/SurveyLendingMoneyEndsBadlyForAmericans.png');
+                                     background-repeat: no-repeat; background-size:cover; height:600px;">
+                            <div class="mask text-white shadow-lg h-100" style="background-color: rgba(0,0,0,0.6);">
+                                <div class="d-flex flex-column text-white justify-content-center align-items-center h-100">
+                                    <h1 class="display-4 border-bottom border-white pb-3">Sales</h1>
+
+                                    <span class="pt-3">Our Success is your satisfaction</span>
+                                </div>
+                            </div>
+                        </div>-->
+                    </a>
+                    <a asp-controller="Customers" asp-action="Index" class="btn  mw-100 " style="height: 600px; width: 350px;">
+                        <div class="card shadow text-bg-dark bg-gradient w-100 h-100">
+                            <img src="https://cdn.smartkarrot.com/wp-content/uploads/2020/10/Customer-Base.png" class="card-img-top" style="height: 350px;" alt="...">
+                            <div class="card-body" style="opacity: 0.6;">
+                                <h6 class="card-title display-6 text-nowrap pb-3">Customers</h6>
+                                <hr />
+                                <span class="pt-3 card-text">Our aim is your satisfaction</span>
+                            </div>
+                        </div>                          
+                        <!--<div class="bg-image bg-light  hover-overlay w-100" style="background-image: url('https://cdn.smartkarrot.com/wp-content/uploads/2020/10/Customer-Base.png');
+                                             background-repeat: no-repeat; background-size:cover; height:600px;">
+                            <div class="mask text-white shadow-lg h-100" style="background-color: rgba(0,0,0,0.6);">
+                                <div class="d-flex flex-column text-white justify-content-center align-items-center h-100">
+                                    <h1 class="display-4 border-bottom border-white pb-3">Customers</h1>
+
+                                    <span class="pt-3">Our aim is your satisfaction.</span>
+                                </div>
+                            </div>
+                        </div>-->
+                    </a>
+
+                }
+            }
+            
+            <a asp-controller="Inventories" asp-action="Index" class="btn mw-100" style="height: 600px; width: 350px;">
+                <div class="card shadow text-bg-dark bg-gradient w-100 h-100">
+                    <img src="https://www.apsfulfillment.com/wp-content/uploads/2017/05/APS-Fulfillment-Inc.jpg" class="card-img-top" style="height: 350px;" alt="...">
+                    <div class="card-body" style="opacity: 0.6;">
+                        <h6 class="card-title display-6 text-nowrap pb-3">Inventory</h6>
+                        <hr />
+                        <span class="pt-3 card-text">Our Products, Your Happiness</span>
+                    </div>
+                </div>                
+                <!--<div class="bg-image hover-overlay  w-100 " style="background-image: url('https://www.apsfulfillment.com/wp-content/uploads/2017/05/APS-Fulfillment-Inc.jpg');
+                            background-repeat: no-repeat;background-size:cover; height: 600px;">
+                    <div class="mask text-white text-center h-100" style="background-color: rgba(0,0,0,0.6);">
+                        <div class="d-flex flex-column justify-content-center align-items-center h-100">
+                            <h5 class="display-5 pb-3">Inventory</h5>
+                            
+                            <span class="pt-3">Our Collection</span>
+                        </div>
+                    </div>
+                </div>-->
+            </a>
+            @{
+                if (!Context.User.IsInRole("Sales"))
+                {
+
+                    <a asp-controller="OrderRequests" asp-action="Index" class=" btn mw-100" style="height: 600px; width: 350px;">
+                        <div class="card shadow text-bg-dark bg-gradient w-100 h-100">
+                            <img src="https://pictures.dealer.com/j/jaguarclevelandjag/0259/4e7ba2a912763d0287800d2207bca08ax.jpg?impolicy=downsize&w=568" class="card-img-top" style="height: 350px;" alt="...">
+                            <div class="card-body" style="opacity: 0.6;">
+                                <h6 class="card-title display-6 text-nowrap pb-3">Parts & Orders</h6>
+                                <hr />
+                                <span class="pt-3 card-text">The best engine parts, guaranteed.</span>
+                            </div>
+                        </div>
+                        <!--<div class="bg-image rounded w-100" style="background-image: url('https://pictures.dealer.com/j/jaguarclevelandjag/0259/4e7ba2a912763d0287800d2207bca08ax.jpg?impolicy=downsize&w=568');
+                             background-repeat: no-repeat; background-size:cover; height: 600px;">
+                            <div class="mask text-white h-100" style="background-color: rgba(0,0,0,0.6);">
+                                <div class="d-flex flex-column  text-white justify-content-center align-items-center h-100">
+                                    <h5 class="display-5 fs-1 text-nowrap">Parts & Orders</h5>
+
+                                    <span class="pt-3">The best engine parts, guaranteed.</span>
+                                </div>
+                            </div>
+                        </div>-->
+                    </a>
+                }
+            }
+            
+            @{
+                if (Context.User.IsInRole("Admin") || Context.User.IsInRole("Owner"))
+                {
+                    <a asp-controller="Analytics" asp-action="Index" class=" btn mw-100 " style="height: 600px; width: 350px;">
+                        <div class="card shadow text-bg-dark bg-gradient w-100 h-100">
+                            <img src="https://www.analyticsinsight.net/wp-content/uploads/2021/01/Analytics-1024x622.jpeg" class="card-img-top" style="height: 350px;" alt="...">
+                            <div class="card-body">
+                                <h6 class="card-title display-6 pb-3">Analytics</h6>
+                                <hr/>
+                                <span class="pt-3 card-text">View Reports and Company Metrics.</span>
+                            </div>
+                        </div>
+                        <!--<div class="bg-image w-100" style="background-image: url('https://miro.medium.com/v2/resize:fit:702/1*Ra02AqsQlC0KV229EvM98g.png');
+                             background-repeat: no-repeat; background-size:cover; height: 600px; width: 300px;">
+                            <div class="mask text-white h-100 w-100 " style="background-color: rgba(0,0,0,0.6);">
+                                <div class="d-flex flex-column text-white justify-content-center align-items-center h-100">
+                                    <h5 class="display-5 border-bottom border-white pb-3">Analytics</h5>
+                                    
+                                    <h6 class="pt-3 fs-6">View Reports and Company Metrics.</h6>
+                                </div>
+                            </div>
+                        </div>-->
+                    </a>
+                    <a asp-controller="UserRoles" asp-action="Index" class="btn mw-100 " style="height: 600px; width: 350px;">
+                        <div class="card shadow text-bg-dark bg-gradient w-100 h-100">
+                            <img src="https://us.123rf.com/450wm/kornkasame/kornkasame1903/kornkasame190300005/kornkasame190300005.jpg?ver=6" class="card-img-top" style="height: 350px;" alt="...">
+                            <div class="card-body" style="opacity: 0.6">
+                                <h6 class="card-title display-6 text-nowrap pb-3">Administration</h6>
+                                <hr />
+                                <span class="pt-3 card-text">Company awaiting your suggestions.</span>
+                            </div>
+                        </div>
+                        <!--<div class="bg-image w-100" style="background-image: url('https://us.123rf.com/450wm/kornkasame/kornkasame1903/kornkasame190300005/kornkasame190300005.jpg?ver=6');
+                     background-repeat: no-repeat; background-size:cover; height: 600px; width: 300px;">
+                            <div class="mask z-n1 text-white h-100 w-100 " style="background-color: rgba(0,0,0,0.6);">
+                                <div class="container d-flex flex-column text-white justify-content-center align-items-center h-100">
+                                    <h5 class="display-5 text-nowrap ">Manage Roles</h5>
+                                    <hr class="w-75 z-3 pb-3" style="color: white; height: 1px;">
+                                    <h6 class=" fs-6pt-3">Company awaiting your suggestions.</h6>
+                                </div>
+                            </div>
+                        </div>-->
+                    </a>
+                }
+            }
+           
+
+        </div>
+    }
+}
+
+ 

@@ -1,0 +1,109 @@
+﻿@model Emmas_Small_Engines.Models.OrderRequest
+
+@{
+    ViewData["Title"] = "Delete Order";
+}
+<div class="d-flex mt-5 mb-2 flex-row gap-2">
+    <h3 class="display-4">Delete Order</h3>      
+</div>
+<hr class="mb-4 mt-3" />
+<div class="container shadow pb-1 bg-light bg-gradient">
+    <div class="row text-center">
+        <h4 class="display-5 pt-3">Are you sure you wish to delete this order?</h4>
+    </div>
+    <hr class="mb-4 mt-2 w-75 mx-auto" />
+    <div class="row mb-3">
+        <div class="col-md-10 mx-auto bg-light mb-5 py-3 rounded-3">
+            <div class="card shadow-lg border-bottom mx-auto" style="width: 300px;">
+                <div class="card-header fs-5 bg-primary text-white">
+                    Order Request #@Html.DisplayFor(model=> model.ExternalOrderNumber)
+                </div>
+                <div class="card-body bg-light bg-gradient">
+                    <ul class="list-group list-group-flush">
+                        <li class="input-group mb-3">
+                            @{
+                                int orderInvCount = Model.OrderRequest_Inventories.Count;
+                                if (orderInvCount > 0)
+                                {
+                                    string firstOrderInv = Model.OrderRequest_Inventories.FirstOrDefault().Inventory.Name;
+                                    if (orderInvCount > 1)
+                                    {
+                                        string orderInvList = "";
+                                        var c = Model.OrderRequest_Inventories.ToList();
+                                        for (int i = 1; i < orderInvCount; i++)
+                                        {
+                                            orderInvList += c[i].Inventory.Name + " <br />";
+                                        }
+                                        <span class="input-group-text" id="invenHeading">
+                                            @Html.DisplayNameFor(model=> model.OrderRequest_Inventories)
+                                        </span>
+                                        <div class="form-control" aria-describedby="invenHeading" value="">
+                                            <a class="flex-row text-decoration-none" role="button" data-bs-toggle="collapse" href="#collapsedHistory@(Model.ID)" aria-expanded="false" aria-controls="collapseHistory@(Model.ID)">
+                                                @firstOrderInv <span class="badge bg-info">@orderInvCount</span>
+                                            </a>
+                                            <div class="collapse" id="collapsedHistory@(Model.ID)">
+                                                @Html.Raw(orderInvList)
+                                            </div>
+                                        </div>
+
+                                    }
+                                    else
+                                    {
+                                        <span class="input-group-text" id="invenHeading">
+                                            @Html.DisplayNameFor(model=> model.OrderRequest_Inventories)
+                                        </span>
+                                        <div class="form-control" aria-describedby="invenHeading" value="">
+                                            @firstOrderInv
+                                        </div>
+                                    }
+                                }
+                            }
+                        </li>
+                        <li class="input-group flex-nowrap mb-3">
+                            <span class=" input-group-text" id="fieldHeading">
+                                @Html.DisplayNameFor(model => model.Description)
+                            </span>
+                            <textarea disabled type="text" class="  form-control" aria-describedby="fieldHeading">@Html.DisplayFor(model=> model.Description)</textarea>
+                        </li>
+                        <li class="input-group  mb-3">
+                            <span class="  input-group-text" id="sentInput">
+                                @Html.DisplayNameFor(model => model.SentDate)
+                            </span>
+                            <input disabled type="text" class=" form-control" aria-describedby="sentInput" value=" @Html.DisplayFor(model => model.SentDate)">
+
+                        </li>
+                        <li class="input-group  mb-3">
+                            <span class=" input-group-text" id="recInput">
+                                @Html.DisplayNameFor(model => model.ReceiveDate)
+                            </span>
+                            <input disabled type="text" class=" form-control" aria-describedby="sentInput" value="@Html.DisplayFor(model => model.ReceiveDate)">
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+        <hr class="mb-4 mt-0 w-75 mx-auto" />
+        <form asp-action="Delete">
+            <div class="row flex-row justify-content-center gap-3">
+            
+                <input type="hidden" asp-for="ID" />
+                <div class="col-auto">
+                    <input type="submit" value="Confirm Delete" class="btn btn-outline-success" />
+
+                </div>
+                <div class="col-auto">
+                    <a asp-action="Index" class="btn btn-outline-danger">Cancel</a>
+                </div>
+
+            </div>
+        </form>
+
+    </div>
+    
+    
+    
+</div>
+
+

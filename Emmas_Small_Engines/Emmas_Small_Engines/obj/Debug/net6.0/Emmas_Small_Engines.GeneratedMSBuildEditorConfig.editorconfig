@@ -1,0 +1,293 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Emmas_Small_Engines
+build_property.RootNamespace = Emmas_Small_Engines
+build_property.ProjectDir = C:\Users\samw\OneDrive\Desktop\NiSSo-Emmas-Small-Engines-Prototype-I-Development\Emmas_Small_Engines\Emmas_Small_Engines\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\samw\OneDrive\Desktop\NiSSo-Emmas-Small-Engines-Prototype-I-Development\Emmas_Small_Engines\Emmas_Small_Engines
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Areas/Identity/Pages/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Areas/Identity/Pages/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Areas/Identity/Pages/Account/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfVmlld0ltcG9ydHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Areas/Identity/Pages/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX0xvZ2luUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Areas/Identity/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Areas/Identity/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/Analytics/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5hbHl0aWNzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/COGSReports/COGSReport.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ09HU1JlcG9ydHNcQ09HU1JlcG9ydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/COGSReports/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ09HU1JlcG9ydHNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/COGSReports/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ09HU1JlcG9ydHNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/COGSReports/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ09HU1JlcG9ydHNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/COGSReports/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ09HU1JlcG9ydHNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/COGSReports/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ09HU1JlcG9ydHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/Customers/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/Customers/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/Customers/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/Customers/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/Customers/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/HourlyReports/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG91cmx5UmVwb3J0c1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/HourlyReports/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG91cmx5UmVwb3J0c1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/HourlyReports/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG91cmx5UmVwb3J0c1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/HourlyReports/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG91cmx5UmVwb3J0c1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/HourlyReports/HourlyReport.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG91cmx5UmVwb3J0c1xIb3VybHlSZXBvcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/HourlyReports/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG91cmx5UmVwb3J0c1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/Inventories/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3JpZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/Inventories/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3JpZXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/Inventories/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3JpZXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/Inventories/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3JpZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/Inventories/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3JpZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/Invoices/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52b2ljZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/Invoices/CreateInvoice.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52b2ljZXNcQ3JlYXRlSW52b2ljZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/Invoices/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52b2ljZXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/Invoices/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52b2ljZXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/Invoices/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52b2ljZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/Invoices/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52b2ljZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/Invoices/Receipt.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52b2ljZXNcUmVjZWlwdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/OrderRequests/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJSZXF1ZXN0c1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/OrderRequests/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJSZXF1ZXN0c1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/OrderRequests/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJSZXF1ZXN0c1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/OrderRequests/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJSZXF1ZXN0c1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/POS/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUE9TXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/POS/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUE9TXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/POS/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUE9TXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/POS/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUE9TXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/POS/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUE9TXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/SalesReports/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZXNSZXBvcnRzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/SalesReports/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZXNSZXBvcnRzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/SalesReports/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZXNSZXBvcnRzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/SalesReports/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZXNSZXBvcnRzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/SalesReports/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZXNSZXBvcnRzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/SalesReports/SalesReport.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZXNSZXBvcnRzXFNhbGVzUmVwb3J0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/Shared/_AnalyticsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BbmFseXRpY3NQYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/Shared/_PagingNavBar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9QYWdpbmdOYXZCYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/Suppliers/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VwcGxpZXJzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/Suppliers/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VwcGxpZXJzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/Suppliers/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VwcGxpZXJzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/Suppliers/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VwcGxpZXJzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/Suppliers/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VwcGxpZXJzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/UserRoles/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclJvbGVzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/UserRoles/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclJvbGVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/samw/OneDrive/Desktop/NiSSo-Emmas-Small-Engines-Prototype-I-Development/Emmas_Small_Engines/Emmas_Small_Engines/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-r35jffv7ke

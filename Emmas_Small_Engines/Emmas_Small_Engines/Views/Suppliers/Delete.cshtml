@@ -1,0 +1,141 @@
+﻿@model Emmas_Small_Engines.Models.Supplier
+
+@{
+    ViewData["Title"] = "Delete Supplier";
+}
+<div class="d-flex mt-5 mb-2 flex-row gap-2">
+    <h3 class="display-4">Delete Supplier</h3>
+</div>
+<hr class="mb-4 mt-3" />
+<div class="container shadow pb-1 bg-light bg-gradient">
+    <div class="row text-center">
+        <h4 class="display-5 pt-3">Are you sure you wish to delete this Supplier?</h4>
+    </div>
+    <hr class="mb-4 mt-2 w-75 mx-auto" />
+    <div class="row mb-3">
+        <div class="col-md-10 mx-auto bg-light mb-5 py-3 rounded-3">
+            <div class="card shadow-lg border-bottom mx-auto" style="width: 300px;">
+                <div class="card-header fs-5 bg-primary text-white">
+                    <i class="bi bi-buildings me-4" style="font-size: 2rem;"></i>  @Html.DisplayFor(model => model.Name)
+                </div>
+                <div class="card-body bg-light bg-gradient">
+                    <ul class="list-group list-group-flush">
+                        <li class="input-group mb-3">
+                            <span class=" input-group-text" id="phoneHeading">
+                                @Html.DisplayNameFor(model => model.Phone)
+                            </span>
+                            <input disabled type="tel" class="form-control" aria-describedby="phoneHeading" value="@Html.DisplayFor(model => model.Phone)"/>
+                        </li>
+                        <li class="input-group mb-3">
+                            <span class="input-group-text" id="emailHeading">
+                                @Html.DisplayNameFor(model => model.Email)
+                            </span>
+                            <div class="disabled form-control">@Html.DisplayFor(model => model.Email)</div>
+                        </li>
+                        <li class="input-group  mb-3">
+                            <span class="  input-group-text" id="addInput">
+                                @Html.DisplayNameFor(model => model.Address)
+                            </span>
+                            <input disabled type="text" class=" form-control" aria-describedby="addInput" value="@Html.DisplayFor(model => model.Address)">
+
+                        </li>
+                        <li class="input-group  mb-3">
+                            <span class=" input-group-text" id="cityInput">
+                                @Html.DisplayNameFor(model => model.City)
+                            </span>
+                            <input disabled type="text" class=" form-control" aria-describedby="cityInput" value="@Html.DisplayFor(model => model.City)"/>
+                        </li>
+                        <li class="input-group  mb-3">
+                            <span class=" input-group-text" id="provInput">
+                                @Html.DisplayNameFor(model => model.Province)
+                            </span>
+                            <input disabled type="text" class=" form-control" aria-describedby="provInput" value="@Html.DisplayFor(model => model.Province)" />
+                        </li>
+                        <li class="input-group  mb-3">
+                            <span class=" input-group-text" id="postalInput">
+                                @Html.DisplayNameFor(model => model.Postal)
+                            </span>
+                            <input disabled type="text" class=" form-control" aria-describedby="postalInput" value="@Html.DisplayFor(model => model.Postal)" />
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+        <hr class="mb-4 mt-0 w-75 mx-auto" />
+        <form asp-action="Delete">
+            <div class="row flex-row justify-content-center gap-3">
+
+                <input type="hidden" asp-for="ID" />
+                <div class="col-auto">
+                    <input type="submit" value="Confirm Delete" class="btn btn-outline-success" />
+
+                </div>
+                <div class="col-auto">
+                    <a asp-action="Index" class="btn btn-outline-danger">Cancel</a>
+                </div>
+
+            </div>
+        </form>
+
+    </div>
+
+
+
+</div>
+
+<!--<div>
+    <h4>Supplier</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            Html.DisplayNameFor(model => model.Phone)
+        </dt>
+        <dd class = "col-sm-10">
+            Html.DisplayFor(model => model.Phone)
+        </dd>
+        <dt class = "col-sm-2">
+            Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class = "col-sm-10">
+            Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class = "col-sm-2">
+            .DisplayNameFor(model => model.Address)
+        </dt>
+        <dd class = "col-sm-10">
+            Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt class = "col-sm-2">
+            .DisplayNameFor(model => model.City)
+        </dt>
+        <dd class = "col-sm-10">
+            Html.DisplayFor(model => model.City)
+        </dd>
+        <dt class = "col-sm-2">
+            Html.DisplayNameFor(model => model.Province)
+        </dt>
+        <dd class = "col-sm-10">
+            Html.DisplayFor(model => model.Province)
+        </dd>
+        <dt class = "col-sm-2">
+            Html.DisplayNameFor(model => model.Postal)
+        </dt>
+        <dd class = "col-sm-10">
+           Html.DisplayFor(model => model.Postal)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ID" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>-->

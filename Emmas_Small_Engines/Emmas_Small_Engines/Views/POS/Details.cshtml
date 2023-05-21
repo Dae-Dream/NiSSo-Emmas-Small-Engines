@@ -1,0 +1,60 @@
+﻿@model Emmas_Small_Engines.Models.Inventory
+
+@{
+    ViewData["Title"] = "Sale Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Inventory</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Size)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Size)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AdjustPrice)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AdjustPrice)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MarkupPrice)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MarkupPrice)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Current)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Current)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Stock)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Stock)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.UPC">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

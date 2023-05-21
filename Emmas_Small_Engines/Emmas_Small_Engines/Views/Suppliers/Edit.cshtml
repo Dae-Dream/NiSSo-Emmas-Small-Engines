@@ -1,0 +1,131 @@
+﻿@model Emmas_Small_Engines.Models.Supplier
+
+@{
+    ViewData["Title"] = "Edit Supplier";
+}
+
+
+<div class="d-flex flex-row gap-2" style="margin-top:180px;">
+    <div class="col-auto flex-grow-0">
+        <h5 class="display-5">Suppliers</h5>
+    </div>
+    <div class=" col-auto flex-grow-1">
+        <h5 class="d-inline display-5 text-muted">- Edit</h5>
+    </div>
+    
+</div>
+<hr class="mb-4 mt-3" />
+<div class="container shadow pb-1 bg-light bg-gradient">
+    <hr class="mb-4 mt-2 w-75 mx-auto" />
+    <form asp-action="Edit" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="ID" />
+
+        <div class="row mb-3">
+            <div class="col-md-10 mx-auto bg-light mb-5 py-3 rounded-3">
+                <div class="card shadow-lg border-bottom mx-auto" style="width: 300px;">
+                    <div class="card-header fs-5 bg-primary text-white">
+                        <i class="bi bi-buildings me-4" style="font-size: 2rem;"></i> @Html.DisplayFor(model => model.Name)
+                    </div>
+                    <div class="card-body bg-light bg-gradient">
+                        <ul class="list-group list-group-flush">
+                            <li class="input-group mb-3">
+                                <span class=" input-group-text" id="nameHeading">
+                                    @Html.DisplayNameFor(model => model.Name)
+                                </span>
+                                <input asp-for="Name" class="form-control" aria-describedby="nameHeading" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+
+                            </li>
+                            <li class="input-group mb-3">
+                                <span class="input-group-text" id="emailHeading">
+                                    @Html.DisplayNameFor(model => model.Email)
+                                </span>
+                                <input asp-for="Email" class="form-control" aria-describedby="emailHeading" />
+                            </li>
+                            <li class="input-group mb-3">
+
+                                <span class=" input-group-text" id="phoneHeading">
+                                    @Html.DisplayNameFor(model => model.Phone)
+                                </span>
+                                <input asp-for="Phone" class="form-control" />
+                                <span asp-validation-for="Phone" class="text-danger"></span>
+
+                            </li>
+
+                            <li class="input-group  mb-3">
+                                <span class="  input-group-text" id="addInput">
+                                    @Html.DisplayNameFor(model => model.Address)
+                                </span>
+                                <input asp-for="Address" class="form-control" />
+                                <span asp-validation-for="Address" class="text-danger"></span>
+                            </li>
+                            <li class="input-group  mb-3">
+                                <span asp-validation-for="City" class="text-danger"></span>
+
+                                <span class=" input-group-text" id="cityInput">
+                                    @Html.DisplayNameFor(model => model.City)
+                                </span>
+                                <input asp-for="City" class="form-control" />
+                            </li>
+                            <li class="input-group  mb-3">
+                                <span class=" input-group-text" id="provInput">
+                                    @Html.DisplayNameFor(model => model.Province)
+                                </span>
+                                <select asp-for="Province" class="form-select" aria-described-by="provInput">
+                                    <option value="Ontario">Ontario</option>
+                                    <option value="Alberta">Alberta</option>
+                                    <option value="British Columbia">British Columbia</option>
+                                    <option value="Manitoba">Manitoba</option>
+                                    <option value="New Brunswick">New Brunswick</option>
+                                    <option value="Newfoundland & Labrador">Newfoundland & Labrador</option>
+                                    <option value="Northwest Territories">Northwest Territories</option>
+                                    <option value="Nova Scotia">Nova Scotia</option>
+                                    <option value="Nunavut">Nunavut</option>
+                                    <option value="PEI">PEI</option>
+                                    <option value="Quebec">Quebec</option>
+                                    <option value="Saskatchewan">Saskatchewan</option>
+                                    <option value="Yukon">Yukon</option>
+                                </select>
+                                <!--<input  type="text" class=" form-control" aria-describedby="provInput" value="@Html.DisplayFor(model => model.Province)" />-->
+                                <span asp-validation-for="Province" class="text-danger"></span>
+                            </li>
+                            <li class="input-group  mb-3">
+                                <span asp-validation-for="Postal" class="text-danger"></span>
+
+                                <span class=" input-group-text" id="postalInput">
+                                    @Html.DisplayNameFor(model => model.Postal)
+                                </span>
+                                <input asp-for="Postal" class="form-control" />
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+            <hr class="mb-4 mt-0 w-75 mx-auto" />
+            <div class="row flex-row justify-content-center gap-3">
+
+                <input type="hidden" asp-for="ID" />
+                <div class="col-auto">
+                    <input type="submit" value="Save Changes" class="btn btn-outline-success" />
+
+                </div>
+                <div class="col-auto">
+                    <a asp-action="Index" class="btn btn-outline-danger">Cancel</a>
+                </div>
+
+            </div>
+
+
+        </div>
+    </form>
+
+
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

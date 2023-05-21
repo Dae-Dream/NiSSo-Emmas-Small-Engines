@@ -1,0 +1,267 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Emma's Small Engines</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Emmas_Small_Engines.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/fontawesome-free-6.3.0-web/css/all.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+</head>
+
+<body>
+    @{
+        var Pages = new List<string>();
+        Pages.Add("Sales Reports"); Pages.Add("Analytics");
+        Pages.Add("Hourly Reports"); Pages.Add("COGS Reports");
+    }
+    <div class="d-inline-flex gap-5 w-100">
+        <div class="px-3 flex-column min-vh-100  bg-dark" style="width: 280px;">
+            <a asp-controller="Home" asp-action="Index" class="d-flex align-items-center mt-4 text-white text-decoration-none">
+                <!--mb-3 mb-md-0 me-md-auto-->
+                <img src="~/eseLogo.png" width="100px;" height="100px" class="text-center" alt="Company Logo"/>
+                <!--<svg class="bi pe-none me-2 align-self-start"></svg><span class="fs-4">Emma's Small Engines</span>-->
+            </a>
+            <hr class="mt-4" style="color: white; height: 1px;">
+             @if (SignInManager.IsSignedIn(User))
+            {
+                <div class="dropdown p-3 mt-2 align-self-end">
+                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">                    
+                   
+                            <div>
+                                <div class="row">
+                                    <strong style="font-size: 12px;">Hello, @User.Identity?.Name!</strong>
+                                </div>
+                                <div class="row">
+                                    <p style="font-size: 10px">@ViewBag.SignInTime</p>
+                                </div>
+                            </div>
+                        
+
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark text-small p-2 text-white shadow">
+                        <partial name="_LoginPartial" />
+                    </ul>
+                </div>
+            }
+            else
+            {
+                <h6 class="display-5 fs-6 text-white text-center">Hello, User!</h6>
+            }
+            <hr style="color: white; height: 1px;">
+            <ul class="nav nav-pills  flex-column gap-3 mb-auto mt-3">  
+                @{
+                    string classList = "";
+                    classList= ViewData["Title"].ToString() == "Home Page" || ViewData["Title"].ToString().Contains("Login") ? "nav-link text-white active" :  "nav-link text-white";
+                    <li class="nav-item">
+                        <a asp-controller="Home" asp-action="Index" class="@classList" id="homeLink">
+                            <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                            <i class="fa-solid fa-house-chimney"></i>
+                            &nbsp <label class=" display-6 fs-6 ">Home</label>
+                        </a>
+                    </li>
+
+                    if (Context.User.IsInRole("Admin") || Context.User.IsInRole("Owner"))
+                    {
+                        classList = ViewData["Title"].ToString().Contains("Inventory") || ViewData["Title"].ToString().Contains("Product") ? "nav-link text-white active" : "nav-link text-white";
+
+                        <li class="nav-item">
+                            <a asp-controller="Inventories" asp-action="Index" class="@classList" id="inventoryLink">
+                                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+                                <i class="fa-solid fa-warehouse"></i>
+                                &nbsp Inventory
+                            </a>
+                        </li>
+                        if (Context.User.IsInRole("Owner"))
+                        {
+                            classList = ViewData["Title"].ToString().Contains("Sales") || ViewData["Title"].ToString().Contains("Sale") ? "nav-link text-white active" : "nav-link text-white";
+
+                            <li class="nav-item">
+                                <a asp-controller="POS" asp-action="Index" class="@classList" id="POSLink">
+                                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                                    <i class="fa-regular fa-credit-card"></i>
+                                    &nbsp POS
+                                </a>
+                            </li>
+                        }
+                        classList = ViewData["Title"].ToString().Contains("Orders") || ViewData["Title"].ToString().Contains("Order") ? "nav-link text-white active" : "nav-link text-white";
+
+                        <li class="nav-item">
+                            <a asp-controller="OrderRequests" asp-action="Index" class="@classList" id="orderRequestLink">
+                                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+                                <i class="fa-solid fa-screwdriver-wrench"></i>
+                                &nbsp Order Requests
+                            </a>
+                        </li>
+                        classList = ViewData["Title"].ToString().Contains("Suppliers") || ViewData["Title"].ToString().Contains("Supplier") ? "nav-link text-white active" : "nav-link text-white";
+
+                        <li class="nav-item">
+                            <a asp-controller="Suppliers" asp-action="Index" class="@classList" id="supplierLink">
+                                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                                <i class="fa-regular fa-handshake"></i>
+                                &nbsp Suppliers
+                            </a>
+                        </li>
+                        classList = ViewData["Title"].ToString().Contains("Customers") || ViewData["Title"].ToString().Contains("Customer") ? "nav-link text-white active" : "nav-link text-white";
+
+                        <li class="nav-item">
+                            <a href="/Customers/Index" class="@classList" id="customerLink">
+                                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                                <i class="fa-solid fa-users"></i>
+                                &nbsp Customers
+                            </a>
+                        </li>    
+                        <!--Commented in the event we want this back later for some reason
+                            <li class="nav-item">
+                                <a asp-controller="Invoices" asp-action="CreateInvoice" class="nav-link text-white" id="invoiceLink">
+                                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                                    <i class="fa-regular fa-file-lines"></i>
+                                    &nbsp Invoices
+                                </a>
+                            </li>
+                        -->
+                        classList = ViewData["Title"].ToString().Contains("Receipts") || ViewData["Title"].ToString().Contains("Receipt") ? "nav-link text-white active" : "nav-link text-white";
+
+                        <li class="nav-item">
+                            <a asp-controller="Invoices" asp-action="Index" class="@classList" id="receiptLink">
+                                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                                <i class="fa-regular fa-file-lines"></i>
+                                &nbsp Receipts
+                            </a>
+                        </li>
+
+                        classList = ViewData["Title"].ToString().Contains("Analytics") || ViewData["Title"].ToString().Contains("Report") ? "nav-link text-white active" : "nav-link text-white";
+                        <li class="nav-item">
+                            <a asp-controller="Analytics" asp-action="Index" class="@classList" id="analyticsLink">
+                                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+                                <i class="fa-solid fa-chart-pie"></i>
+                                &nbsp Analytics
+                            </a>
+                        </li>
+                        classList = ViewData["Title"].ToString().Contains("Admin") || ViewData["Title"].ToString().Contains("Register") ? "nav-link text-white active" : "nav-link text-white";
+
+                        <li class="nav-item">
+                            <a class="@classList" asp-controller="UserRoles" asp-action="Index" id="adminLink">
+                                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+                                <i class="fa-solid fa-gear"></i>
+                                &nbsp Administration
+                            </a>
+                        </li>
+                    }
+                    else if (Context.User.IsInRole("Technician") || Context.User.IsInRole("Owner")|| Context.User.IsInRole("Ordering"))
+                    {
+                        classList = ViewData["Title"].ToString().Contains("Orders") || ViewData["Title"].ToString().Contains("Order") ? "nav-link text-white active" : "nav-link text-white";
+
+                        <li class="nav-item">
+                            <a asp-controller="OrderRequests" asp-action="Index" class="@classList" id="orderRequestLink">
+                                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+                                <i class="fa-solid fa-screwdriver-wrench"></i>
+                                &nbsp Order Requests
+                            </a>
+                        </li>
+                        
+                        classList = ViewData["Title"].ToString().Contains("Inventory") || ViewData["Title"].ToString().Contains("Product") ? "nav-link text-white active" : "nav-link text-white";
+
+                        <li class="nav-item">
+                            <a asp-controller="Inventories" asp-action="Index" class="@classList" id="inventoryLink" aria-current="page">
+                                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+                                <i class="fa-solid fa-warehouse"></i>
+                                &nbsp Inventory
+                            </a>
+                        </li>
+                        classList = ViewData["Title"].ToString().Contains("Suppliers") || ViewData["Title"].ToString().Contains("Supplier") ? "nav-link text-white active" : "nav-link text-white";
+
+                        <li class="nav-item">
+                            <a asp-controller="Suppliers" asp-action="Index" class="@classList" id="supplierLink">
+                                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                                <i class="fa-regular fa-handshake"></i>
+                                &nbsp Suppliers
+                            </a>
+                        </li>
+
+                   
+                    }else if(Context.User.IsInRole("Sales") || Context.User.IsInRole("Owner"))
+                    {
+                        classList = ViewData["Title"].ToString().Contains("Sales") || ViewData["Title"].ToString().Contains("Sale") ? "nav-link text-white active" : "nav-link text-white";
+
+                        <li class="nav-item">
+                            <a asp-controller="POS" asp-action="Index" class="@classList" id="POSLink">
+                                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                                <i class="fa-regular fa-credit-card"></i>
+                                &nbsp POS
+                            </a>
+                        </li>
+                        classList = ViewData["Title"].ToString().Contains("Customers") || ViewData["Title"].ToString().Contains("Customer") ? "nav-link text-white active" : "nav-link text-white";
+
+                        <li class="nav-item">
+                            <a href="/Customers/Index" class="@classList" id="customerLink">
+                                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                                <i class="fa-solid fa-users"></i>
+                                &nbsp Customers
+                            </a>
+                        </li>
+                        classList = ViewData["Title"].ToString().Contains("Receipts") || ViewData["Title"].ToString().Contains("Receipt") ? "nav-link text-white active" : "nav-link text-white";
+
+                        <li class="nav-item">
+                            <a asp-controller="Invoices" asp-action="Index" class="@classList" id="receiptLink">
+                                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                                <i class="fa-regular fa-file-lines"></i>
+                                &nbsp Receipts
+                            </a>
+                        </li>
+                        classList = ViewData["Title"].ToString().Contains("Inventory") || ViewData["Title"].ToString().Contains("Product") ? "nav-link text-white active" : "nav-link text-white";
+
+                        <li class="nav-item">
+                            <a asp-controller="Inventories" asp-action="Index" class="@classList" id="inventoryLink" aria-current="page">
+                                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+                                <i class="fa-solid fa-warehouse"></i>
+                                &nbsp Inventory
+                            </a>
+                        </li>
+                    }
+                }
+
+                
+            </ul>
+            <hr>
+            
+        </div>
+       
+        <div class="container ">
+            <main role="main" class="pb-3 ">
+                @{
+                   
+                    foreach(string page in Pages)
+                    {
+                        if (ViewData["Title"].ToString().Contains(page))
+                        {
+                            <partial name="_AnalyticsPartial" />
+                        }
+                    }
+                    @RenderBody()
+                }
+                   
+            </main>
+        </div>
+    </div>
+    
+
+    <footer class="border-top footer text-muted text-center">
+        <div class="container">
+            &copy; 2023 - Emma's Small Engines - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <!--Test Code-->
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+    
+</body>
+</html>

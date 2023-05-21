@@ -1,0 +1,15 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<ul class="navbar-nav p-2">
+	@if (SignInManager.IsSignedIn(User))
+	{
+		
+		<li class="dropdown-item">
+			<form asp-controller="Home" asp-action="Logout" method="post">
+				<button type="submit" class="nav-link btn btn-link text-light">Logout</button>
+			</form>
+		</li>
+	}
+</ul>

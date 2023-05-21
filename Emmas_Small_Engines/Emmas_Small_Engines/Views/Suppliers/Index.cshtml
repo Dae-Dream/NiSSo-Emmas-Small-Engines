@@ -1,0 +1,119 @@
+﻿@model IEnumerable<Emmas_Small_Engines.Models.Supplier>
+
+@{
+	ViewData["Title"] = "Suppliers Home";
+}
+<div class="d-flex flex-row gap-2" style="margin-top:180px;">
+	<div class="col-auto flex-grow-0">
+		<h5 class="display-5">Suppliers</h5>
+	</div>
+	<div class=" col-auto flex-grow-1">
+		<h5 class="d-inline display-5 text-muted">- Home</h5>
+	</div>
+	<div class="vr mb-2 align-self-end" style="height: 2rem"></div>
+	<div class="col-md-auto  align-self-end">
+
+		<a title="Add New Supplier" asp-controller="Suppliers" asp-action="Create" class="btn text-decoration-none btn-link text-primary" >
+			<i class="fa-regular fa-handshake" style="font-size: 2rem;"></i><i class="bi bi-plus" style="font-size: 1.5rem;"></i>
+			
+		</a>
+	</div>
+</div>
+
+<hr class="mb-5 mt-0" />
+<div class="container shadow mt-5 pb-2 bg-light bg-gradient">
+	<form asp-action="Index" method="get">
+		<input type="hidden" name="sortDirection" value="@ViewData["sortDirection"]" />
+		<input type="hidden" name="sortField" value="@ViewData["sortField"]" />
+
+		<div class="form-horizontal d-flex justify-content-center w-100">
+			<div class="row bg-light">
+				
+				<div class="col-md-7  text-nowrap form-group mt-5 mb-2 " style="width: 500px;">
+                    <label class="control-label" id="searchStringLabel">Search Suppliers</label>
+                    @Html.TextBox("searchString", null, new { @class = "form-control mb-3 mt-1", placeholder = "Search by Name, Email, Address, City, Province, Postal"})
+
+				</div>
+                <div class="col-auto me-auto align-self-end  form-group ">
+                    <input type="submit" name="actionButton" value="Search" class="btn btn-outline-primary mb-2" />
+					<a asp-action="Index" class="btn btn-outline-danger mb-2">Clear</a>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<table class="table w-75 mx-auto text-center text-nowrap table-striped shadow ">
+				<thead class="bg-dark align-middle">
+					<tr>
+						<th>
+							<input type="submit" name="actionButton" value="Name" class="btn btn-link link-light" />
+						</th>
+						<th>
+							<input type="submit" disabled="disabled" value="Phone" class="btn btn-link link light" />
+						</th>
+						<th>
+							<input type="submit" disabled="disabled" value="Email" class="btn btn-link link-light" />
+						</th>
+						<th>
+							<input type="submit" disabled="disabled" value="Address" class="btn btn-link link-light" />
+						</th>
+						<th>
+							<input type="submit" name="actionButton" value="City" class="btn btn-link link-light" />
+						</th>
+						<th>
+							<input type="submit" name="actionButton" value="Province" class="btn btn-link link-light" />
+						</th>
+						<th>
+							<input type="submit" disabled="disabled" value="Postal" class="btn btn-link link-light" />
+						</th>
+						<th>
+							<input type="submit" disabled="disabled" value="Actions" class="btn btn-link link-light" />
+
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var item in Model)
+					{
+						<tr>
+							<td>
+								@Html.DisplayFor(modelItem => item.Name)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.PhoneFormatted)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Email)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Address)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.City)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Province)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Postal)
+							</td>
+							<td>
+								<a title="Edit Supplier" asp-action="Edit" asp-route-id="@item.ID" class="text-decoration-none">
+									<i class="bi bi-pencil-fill text-warning-emphasis" style="font-size: 1rem;"></i>
+								</a>
+								<div class="vr align-self-end" style="height: 1rem"></div>
+
+								<a title="Remove Supplier" asp-action="Delete" asp-route-id="@item.ID" class="text-decoration-none link-danger">
+									<i class="bi-trash3-fill" style="font-size: 1rem;"></i>
+								</a>
+								<!--<a asp-action="Details" asp-route-id="@item.ID">Details</a>-->
+								<!--<a asp-action="Delete" asp-route-id="@item.ID">Delete</a>-->
+							</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+
+		<partial name="_PagingNavBar" />
+	</form>
+</div>

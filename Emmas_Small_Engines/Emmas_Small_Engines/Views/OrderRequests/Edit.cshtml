@@ -1,0 +1,176 @@
+﻿@model Emmas_Small_Engines.Models.OrderRequest
+
+@{
+    ViewData["Title"] = "Edit Order";
+}
+
+<div class="row">
+    <h1 class="align-middle">Edit Order #@ViewBag.ExtOrdNum</h1>
+
+</div>
+
+<hr />
+<form autocomplete="off" asp-action="Edit" asp-controller="OrderRequests" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="row-auto my-2 d-none">
+        <label asp-for="ExternalOrderNumber" class="control-label"></label>
+        <input asp-for="ExternalOrderNumber" class="form-control my-3" readonly value="@ViewBag.ExtOrdNum" />
+        <span asp-validation-for="ExternalOrderNumber" class="text-danger"></span>
+    </div>
+
+    <div class="row justify-content-center my-2">
+        <div class="col-6 my-2">
+            <label asp-for="Description" class="control-label"></label>
+            <textarea asp-for="Description" class="form-control my-3 " placeholder="Enter item Description"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div class="col-6 my-2">
+            <select name="CustomerID" class="d-none form-select form-select-lg mt-3" style="height:60px;" asp-items="(MultiSelectList)@ViewData["CustomerID"]">
+                <option class="text-muted fs-6">Select a Customer</option>
+            </select>
+            <span asp-validation-for="CustomerID" class="text-danger"></span>
+        </div>
+        <div class=" col-6 my-3 me-auto">
+            <div class="w-75 input-group input-group-sm">
+                <span class="input-group-text fs-6" id="search">
+                    <label class="control-label pe-3 text-nowrap text-secondary" title="Inventory Items">
+                        <svg class="bi" width="10" height="10"><use xlink:href="#table"></use></svg>
+                        <i class="fa-solid fa-warehouse"></i>
+                    </label>
+                </span>
+
+                <input type="text" id="searchStringEdit" class=" form-control form-control-sm" aria-describedby="search" placeholder="Search Inventory Items" />
+                <!--<button type="button" id="searchBtn" title="Search" class="btn input-group-text bg-info  fs-6 text-white btn-sm ">
+                    <i class="bi bi-search"></i>
+                </button>-->
+
+
+            </div>
+            <ul id="searchOptionsEdit" class="list-group z-3 position-absolute text-wrap-none bg-light p-1 border border-3 border-primary-subtle fs-6 overflow-y-auto" style="max-height:200px; margin-left: 66px; width: 380px; opacity: .9;">
+            </ul>
+        </div>
+    </div>
+
+    <div class="d-flex my-5">
+        
+        <div id="availableEdit" class="col-md-5  overflow-auto" style="height: 360px;">
+
+
+            @{
+                int index = 0;
+            }
+
+
+            <div class="container d-flex justify-content-center mt-3  mx-auto">
+                <ol class="list-group list-group-flush  flex-md-wrap" start="@index" id="availableOptionsEdit">
+                    @for (int e = 0; e < ViewBag.Inventory.Length; e++)
+                    {
+                        <li class="list-group-item  mb-1" name="invenCards_li_Edit" id="@e" value="@ViewBag.Inventory[e].UPC">
+                            <div class="card shadow-lg ms-2 mx-auto" style="width:250px;" id="@ViewBag.Inventory[e].Name">
+                                <div class="card-header flex-wrap bg-primary text-white">
+                                    <div class=" form-check form-check-inline">
+                                        <input type="checkbox" name="invenCards_checks_Edit" class="form-check-input" value="@index"><label class="form-check-label display-6 fs-5">@ViewBag.Inventory[e].Name</label>
+                                    </div>
+                                </div>
+                                <div class="card-body bg-light">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="input-group mb-3">
+                                            <span class="  input-group-text" id="UPCinputEdit">
+                                                UPC
+                                            </span>
+                                            <input disabled type="text" class=" form-control" aria-describedby="UPCinputEdit" value="@ViewBag.Inventory[e].UPCFormatted">
+
+                                        </li>
+                                        <li class="input-group mb-3">
+                                            <span class="  input-group-text" id="sizeInputEdit">
+                                                Size
+                                            </span>
+                                            <input disabled type="text" class=" form-control" aria-describedby="sizeInputEdit" value="@ViewBag.Inventory[e].Size">
+                                        </li>
+                                        <li class="input-group mb-3">
+                                            <span class="  input-group-text" id="quantityEdit">
+                                                Quantity
+                                            </span>
+                                            <input disabled type="text" class=" form-control" aria-describedby="quantityEdit" value="@ViewBag.Inventory[e].Quantity">
+
+                                        </li>
+                                        <li class="input-group mb-3">
+                                            <span class="d-none input-group-text" id="orderAmt-@e">
+                                                Item Qty
+                                            </span>
+                                            <input id="orderAmount-@e" type="text" name="orderAmt" class="d-none form-control" aria-describedby="orderAmt" placeholder="Enter Quantity">
+                                            
+                                        </li>
+                                    </ul>
+
+                                </div>
+                                <div class="card-footer input-group">
+                                    <span class="  input-group-text" id="priceInputEdit">
+                                        Price $
+                                    </span>
+                                    <input disabled type="text" class=" form-control" aria-describedby="priceInputEdit" value="@ViewBag.Inventory[e].AdjustPrice">
+
+                                </div>
+                            </div>
+
+                        </li>
+                    }
+
+                </ol>
+            </div>
+
+
+
+        </div>
+        <!-- Html.ListBox("availOptions", (MultiSelectList)ViewData["availOpts"], new { size = 10, class = "form-select" , multiple="multiple"})-->
+        <!-- Html.ListBox("availOptions", (MultiSelectList)ViewData["availOpts"], new { size = 10, class = "form-select" , multiple="multiple"})-->
+        <div class="col-md-auto mx-5 align-self-center">
+
+            <button type="button" title="Add to Order List" id="btnRightEdit" class="btn btn-primary btn-sm">
+                <i class="bi bi-arrow-bar-right"></i>
+            </button>
+            <a href="#" title="Select an inventory item from the right to transfer to the Order List on the left. To remove and item from the Order List, select it from  the right and transfer to the Inventory items on the left." class=" d-block btn bg-body-secondary btn-sm my-1">
+                <i class="bi bi-info-circle"></i>
+            </a>
+            <button type="button" title="Remove from Order List" id="btnLeftEdit" class=" d-block btn btn-primary btn-sm">
+                <i class="bi bi-arrow-bar-left"></i>
+            </button>
+
+        </div>
+        <a href="#" for="orderedEdit" class="control-label pe-3 pt-3 text-secondary ms-4 fs-5 text-nowrap text-decoration-none" title="Order List">
+            <i class="bi bi-clipboard2-plus-fill"></i>
+        </a>
+
+
+        <div id="orderedEdit" class="col-md-5  overflow-auto" style="height: 370px;">
+            <div class="container mt-3 d-flex justify-content-center  mx-auto">
+                <ol class="list-group list-group-flush flex-md-wrap" start="@index" size="10" id="orderListEdit">
+                </ol>
+            </div>
+            
+            @Html.ListBox("selectedOptions", (MultiSelectList)ViewData["selOpts"], new { @size = 10, @class = "form-select d-none", multiple="multiple" })
+            @Html.ListBox("orderAmount", (MultiSelectList)ViewData["orderAmt"], new { @size = 10, @class = "form-select d-none", multiple="multiple" })
+
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-auto">
+            <!--<input type="button" id="btnSubmitEdit" value="Create" class="btn btn-outline-success" />-->
+            <input type="submit" id="btnSubmitEdit" value="Confirm" class="btn btn-outline-success"/>
+        </div>
+        <div class="col-auto">
+            <a asp-action="Index" class="btn btn-outline-danger">Cancel</a>
+        </div>
+    </div>
+
+</form>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script src="~/js/multiselectEdit.js"></script>
+
+}

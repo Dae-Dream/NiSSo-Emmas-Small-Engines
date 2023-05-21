@@ -1,0 +1,185 @@
+﻿@model IEnumerable<Emmas_Small_Engines.Models.OrderRequest>;
+
+@{
+    ViewData["Title"] = "Orders Home";
+}
+
+<div class="d-flex flex-row gap-2" style="margin-top:180px;">
+    <div class="col-auto text-nowrap flex-grow-0">
+        <h5 class="display-5">Orders </h5>
+    </div>
+    <div class=" col-auto flex-grow-1">
+        <h5 class="d-inline display-5 text-muted">- Home</h5>
+    </div>
+    <div class="vr mb-2 align-self-end" style="height: 2rem"></div>
+    <div class="col-md-auto  align-self-end">
+
+        <a title="New Order Request" asp-action="Create" asp-controller="OrderRequests" class="text-decoration-none text-opacity-50 btn-link"><i class="bi bi-file-earmark-plus-fill" style="font-size: 2rem;"></i></a>
+    </div>
+</div>
+
+
+<hr class="mb-5 mt-0" />
+<div class="container shadow mt-5 pb-2 bg-light bg-gradient">
+    <form asp-action="Index" method="get">
+        <input type="hidden" name="sortDirection" value="@ViewData["sortDirection"]" />
+        <input type="hidden" name="sortField" value="@ViewData["sortField"]" />
+
+        <div class="form-horizontal d-flex justify-content-center w-100">
+            <div class="row mx-3 bg-light">
+                <div class="col-md-5 form-group text-nowrap mt-5 mb-2 " style="width: 500px;">
+                    <label>Search External Order Number :</label>
+                    @Html.TextBox("searchString", null, new { @class = "form-control mb-3 mt-1", @placeholder="eg. EM-####, em-####, ####" })
+                </div>
+                <div class="col-auto me-auto align-self-end form-group ">
+                    <input type="submit" name="actionButton" value="Filter" class="btn btn-outline-primary mb-2" />
+                    <a asp-action="Index" class="btn btn-outline-danger mb-2">Clear</a>
+                </div>
+            </div>
+        </div>
+
+        <table class="table w-75 mx-auto text-center text-nowrap table-striped shadow ">
+            <thead class="bg-dark align-middle">
+                <tr>
+                    <th>
+                        <input type="submit" name="actionButton" value="ID" class="btn btn-link link-light" />
+                    </th>
+                    <th>
+
+                    </th>
+                    <th>
+                        <input type="submit" disabled="disabled" value="Items" class="btn btn-link link-light" />
+                    </th>
+                    <th>
+                        <input type="submit" name="actionButton" value="Description" class="btn btn-link link-light" />
+                    </th>
+                    <th>
+                        <input type="submit" name="actionButton" value="External Order Number" class="btn btn-link link-light" />
+                    </th>
+                    <th>
+                        <!-- <input type="submit" name="actionButton" value="Supplier" class="btn btn-link link-light" />-->
+                    </th>
+                    <th>
+                        <input type="submit" name="actionButton" value="Sent Date" class="btn btn-link link-light" />
+                    </th>
+                    <th>
+                        <input type="submit" name="actionButton" value="Receive Date" class="btn btn-link link-light" />
+                    </th>
+                    <th>
+                        <input type="submit" disabled="disabled" value="Actions" class="btn btn-link link-light" />
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="bg-light">
+                @foreach (var item in Model)
+                {
+                    
+                    int index = 0;
+                    
+                    <tr name="result-rows" id="result-rows-@index" class="">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ID)
+                            <td>
+                                <td class="text-primary">
+                                    @{
+                                        int ordInvCount = item.OrderRequest_Inventories.Count;
+                                        if (ordInvCount > 0)
+                                        {
+                                            string firstOrdInv = item.OrderRequest_Inventories.FirstOrDefault().Inventory.Name + " x" + item.OrderRequest_Inventories.FirstOrDefault().OrderAmount;
+                                            if (ordInvCount > 1)
+                                            {
+                                                string ordInvList = "";
+                                                var c = item.OrderRequest_Inventories.ToList();
+                                                for (int i = 1; i < ordInvCount; i++)
+                                                {
+                                                    ordInvList += c[i].Inventory.Name + " x" + c[i].OrderAmount + "<br />";
+                                                }
+                                                <a class="text-decoration-none" role="button" data-bs-toggle="collapse" href="#collapseHistory@(item.ID)"
+                               aria-expanded="false" aria-controls="collapseHistory@(item.ID)">
+                                                    View Items <span class="badge bg-info">@ordInvCount</span>
+                                                </a>
+                                                <div class="collapse text-secondary" id="collapseHistory@(item.ID)" >
+                                                    @Html.Raw(firstOrdInv+"<br/>")
+                                                    @Html.Raw(ordInvList)
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                @firstOrdInv 
+                                            }
+                                        }
+                                    }
+                                </td>
+                        <td>
+                                    @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                                    @Html.DisplayFor(modelItem => item.ExternalOrderNumber)
+                        </td>
+                        <td>
+                            <!--Html.DisplayFor(modelItem => item.Customer.LastName), Html.DisplayFor(modelItem => item.Customer.FirstName)-->
+
+                        </td>
+                        <td>
+                                    @Html.DisplayFor(modelItem => item.SentDate)
+                        </td>
+                        <td>
+                                    @Html.DisplayFor(modelItem => item.ReceiveDate)
+                        </td>
+                        <td>
+                            <!--Add send order and receive order buttons here-->
+                            @{
+                                
+                                if (item.SentDate == null )
+                                {
+                                    <a  title="Edit Order" asp-action="Edit" asp-route-id="@item.ID" class="text-decoration-none text-warning-emphasis">
+                                        <i class="bi bi-pencil-fill" style="font-size: 1rem;"></i>
+                                    </a>
+                                    <div class="d-inline-flex">|</div>
+                                    <a title="Send Order" class="text-decoration-none" asp-action="Send" asp-route-id="@item.ID">
+                                        <i class="bi-regular bi-arrow-up-square-fill" style="font-size: 1rem;"></i>
+                                    </a>                                                                       
+                                    <div class="d-inline-flex">|</div>
+                                    <a title="Remove Order" asp-action="Delete" asp-route-id="@item.ID" class="text-decoration-none link-danger">
+                                        <i class="bi-trash3-fill" style="font-size: 1rem;"></i>
+                                    </a>
+                                }else{
+                                
+                                    if (item.ReceiveDate == null)
+                                    {
+                                        <a title="Update Order Info" asp-action="Edit" asp-route-id="@item.ID" class="text-decoration-none text-warning-emphasis">
+                                            <i class="bi-regular bi-file-earmark-arrow-up-fill" style="font-size: 1rem;"></i>
+                                        </a>
+                                        <div class="d-inline-flex">|</div>
+                                        <a  title="Order Received" class="text-decoration-none link-primary" asp-action="Receive" asp-route-id="@item.ID">
+                                            <i class="bi-regular bi-arrow-down-square-fill" style="font-size: 1rem;"></i>
+                                        </a>
+                                        <div class="d-inline-flex">|</div>
+                                        
+                                        <a asp-action="Cancel_Order" asp-route-id="@item.ID" title="Cancel Order"  class="text-decoration-none link-warning">
+                                            <i class="bi bi-arrow-counterclockwise" style="font-size: 1rem;"></i>
+                                        </a>
+                                        <a title="Remove Order" asp-action="Delete" asp-route-id="@item.ID" class="text-decoration-none d-none link-danger">
+                                            <i class="bi-trash3-fill" style="font-size: 1rem;"></i>
+                                        </a>
+                                        
+                                    }else{
+                                        <a title="Remove Order" asp-action="Delete" asp-route-id="@item.ID" class="text-decoration-none link-danger">
+                                            <i class="bi-trash3-fill" style="font-size: 1rem;"></i>
+                                        </a>
+
+                                    }
+                                    
+                                }                               
+                             }
+                             
+                        </td>
+                    </tr>
+                                                           
+                }
+            </tbody>
+        </table>
+        <partial name="_PagingNavBar" />
+    </form>
+
+</div>

@@ -1,0 +1,50 @@
+﻿@{
+    string classListAnalytics;
+}
+<div class="d-flex flex-row gap-2" style="margin-top: 180px;" >
+    <div class="col-auto flex-grow-0">
+        <h5 class="display-5">Analytics</h5>
+    </div>
+    @{
+        if (ViewData["Title"].ToString()==("Analytics - Home")){
+            <div class=" col-auto flex-grow-1">
+                <h5 class="d-inline display-5 text-muted">- Home</h5>
+            </div>
+        }
+        else if (ViewData["Title"].ToString().Contains("Report"))
+        {
+            <div class=" col-auto flex-grow-1">
+                <h5 class="d-inline display-5 text-muted">- @ViewData["Title"].ToString()</h5>
+            </div>
+        }
+    
+    }
+</div>
+<hr class="mt-0" />
+
+<nav class="nav nav-tabs w-100 bg-dark d-flex justify-content-around">
+    <a class="ps-4 pe-5 " href="#"><i class="bi bi-graph-up-arrow text-warning flex-grow-1 fs-4"></i> </a>
+    @{
+        classListAnalytics = ViewData["Title"].ToString().Contains("Analytics") ? "nav-link active text-bg-dark  flex-grow-1 " : "nav-link text-bg-dark flex-grow-1";
+        <a asp-controller="Analytics" asp-action="Index" class="@classListAnalytics">
+            <h6 class="fs-6 display-6 d-inline ">Overview</h6><i class="bi bi-clipboard2-data-fill ps-2"></i>
+        </a>
+        classListAnalytics = ViewData["Title"].ToString() == ("Sales Reports") ? "nav-link active text-bg-dark flex-grow-1" : "nav-link text-bg-dark  flex-grow-1";
+
+        <a asp-controller="SalesReports" asp-action="Index" class="@classListAnalytics">
+            <h6 class="fs-6 display-6 d-inline ">Sales Reports</h6><i class="bi bi-cash-coin ps-2"></i>
+        </a>
+        classListAnalytics = ViewData["Title"].ToString() == ("COGS Reports") ? "nav-link active text-bg-dark flex-grow-1" : "nav-link text-bg-dark flex-grow-1";
+
+        <a asp-controller="COGSReports" asp-action="Index" class="@classListAnalytics">
+            <h6 class="fs-6 display-6 d-inline ">COGS Reports</h6><i class="bi bi-receipt ps-2"></i>
+        </a>
+        classListAnalytics = ViewData["Title"].ToString() == ("Hourly Reports") ? "nav-link active text-bg-dark flex-grow-1" : "nav-link text-bg-dark  flex-grow-1";
+
+        <a asp-controller="HourlyReports" asp-action="Index" class="@classListAnalytics">
+            <h6 class="fs-6 display-6 d-inline ">Hourly Reports</h6> <i class="bi bi-file-earmark-person-fill ps-2 "></i>
+        </a>
+    }
+    
+
+</nav>

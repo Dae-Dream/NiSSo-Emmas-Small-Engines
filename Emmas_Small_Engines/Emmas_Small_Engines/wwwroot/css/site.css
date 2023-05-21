@@ -1,0 +1,57 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-floating {
+    margin-bottom: 1rem;
+}
+
+/*Animation for navigation links on hover*/
+@keyframes hoverAnimation{
+   from {font-size: initial;}
+   to {font-size: 17px;} 
+}
+.nav-link:hover{
+    animation-name:hoverAnimation;
+    animation-duration: 0.1s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    
+}
+
+.page-format {
+    margin-top: 3rem !important;
+    margin-bottom: 3rem !important;
+    background: var(--color-white);
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+    width: 21cm;
+    height: 29.7cm;
+    width: 22cm;
+    height: 34cm;
+    overflow-x: hidden;
+}
+
+/********************************************/
+/*Animation for home page cards will be placed here*/

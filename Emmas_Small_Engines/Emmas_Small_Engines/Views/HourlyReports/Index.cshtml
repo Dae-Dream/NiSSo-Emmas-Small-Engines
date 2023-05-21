@@ -1,0 +1,130 @@
+﻿@model IEnumerable<Emmas_Small_Engines.Models.HourlyReport>
+
+@{
+    ViewData["Title"] = "Hourly Reports";
+}
+
+<!--<div class="d-flex flex-row gap-2">
+    <div class="col-auto flex-grow-1">
+        <h3 class="display-4">Hourly Reports</h3>
+    </div>
+</div>
+
+<hr class="mb-5 mt-0" />-->
+
+<div class="container shadow mt-5 pt-2 pb-2 bg-light">
+
+    <!-- Create section-->
+    <label class="col-md-5 form-group mt-3 mb-0"><strong>Create Report:</strong></label>
+    <div class="form-horizontal mt-3 mb-2">
+        <form asp-action="AddReport" asp-controller="HourlyReports" method="post">
+            <div class="w-75 mx-auto text-center text-nowrap">
+                <span class="col-md-2">
+                    <input type="text" id="hourName" name="hourName" class="" value="Default Report Name" required>
+                </span>
+                <span class="col-md-2">
+                    @Html.DropDownList("hrepCriteria", null, "All Employees", htmlAttributes: new { @class = "" })
+                </span>
+                <span class="col-md-2">
+                    <input type="date" id="StartDate" name="StartDate" class="" value="2010-01-01" required>
+                </span>
+                <span class="col-md-2">
+                    <label>to</label>
+                </span>
+                <span class="col-md-2">
+                    <input type="date" id="EndDate" name="EndDate" class="" value="@DateTime.Now.ToString("yyyy-MM-dd")" required>
+                </span>
+                <span class="form-group">
+                    <input type="submit" value="Save" name="actionButton" class="btn btn-primary btn-sm" />
+                    <input type="submit" value="Save and Print" name="actionButton" class="btn btn-info btn-sm" />
+                </span>
+            </div>
+        </form>
+    </div>
+
+    <form asp-action="Index" method="get">
+        <input type="hidden" name="sortDirection" value="@ViewData["sortDirection"]" />
+        <input type="hidden" name="sortField" value="@ViewData["sortField"]" />
+
+        <label class="col-md-5 form-group mt-5 mb-2"><strong>Search By Report Name:</strong></label>
+        <div class="form-horizontal">
+            <div class="row mx-3 bg-light">
+                <div class="col-md-5 form-group mt-3 mb-2">
+                    @Html.TextBox("searchString", null, new { @class = "form-control mb-2 mt-1" })
+                </div>
+                <div class="col-md-7 align-self-end form-group">
+                    <input type="submit" name="actionButton" value="Search" class="btn btn-outline-primary" />
+                    <a asp-action="Index" class="btn btn-outline-danger">Clear</a>
+                </div>
+            </div>
+        </div>
+
+        <table class="table w-75 mx-auto text-center text-nowrap table-striped shadow">
+            <thead class="bg-dark align-middle">
+                <tr>
+                    <th>
+                        <input type="submit" name="actionButton" value="@Html.DisplayNameFor(model => model.hourName)" class="btn btn-link link-light" />
+                    </th>
+                    <th>
+                        <input type="submit" name="actionButton" value="@Html.DisplayNameFor(model => model.StartDate)" class="btn btn-link link-light" />
+                    </th>
+                    <th>
+                        <input type="submit" name="actionButton" value="@Html.DisplayNameFor(model => model.EndDate)" class="btn btn-link link-light" />
+                    </th>
+                    <th>
+                        <input type="submit" name="actionButton" value="@Html.DisplayNameFor(model => model.hrepCriteria)" class="btn btn-link link-light" />
+                    </th>
+                    <th>
+                        <input type="submit" name="actionButton" value="@Html.DisplayNameFor(model => model.TimeStamp)" class="btn btn-link link-light" />
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody class="bg-light">
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.hourName)
+                        </td>
+                        <td>
+                            @Html.Raw(item.StartDate.ToString("yyyy-MMM-dd"))
+                        </td>
+                        <td>
+                            @Html.Raw(item.EndDate.ToString("yyyy-MMM-dd"))
+                        </td>
+                        <td>
+                            @{
+                                if (item.hrepCriteria is null)
+                                {
+                                    int empCount = item.EmpLogins.Count;
+                                    string firstLine = "All Employees";
+                                        @firstLine
+
+                                }
+                                else
+                                {
+                                    @Html.DisplayFor(modelItem => item.hrepCriteria)
+                                }
+                            }
+                        </td>
+                        <td>
+                            @Html.Raw(item.TimeStamp.ToString("yyyy-MMM-dd hh:mm tt"))
+                        </td>
+                        <td>
+                            <a asp-action="HourlyReport" asp-route-id="@item.ID" class="btn btn-outline-primary btn-sm">View Report</a>
+                            <a asp-action="Delete" asp-route-id="@item.ID" class="btn btn-outline-danger btn-sm">Remove</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <partial name="_PagingNavBar" />
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

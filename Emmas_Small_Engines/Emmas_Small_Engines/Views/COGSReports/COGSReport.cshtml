@@ -1,0 +1,118 @@
+﻿@model Emmas_Small_Engines.Models.COGSReport
+
+@{
+    Layout = null;
+    ViewData["Title"] = "COGS Report";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Emma's Small Engines</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Emmas_Small_Engines.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="pt-2 ps-3" style="position: fixed">
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="ID" />
+            <a href='@ViewData["returnURL"]' class="btn btn-primary">Back to Reports List</a>
+            <input type="submit" value="Discard Report" class="btn btn-danger" />
+        </form>
+    </div>
+
+    <div class="page-format p-5">
+        <div class="d-flex justify-content-between" style="padding-bottom: 16px; margin-bottom: 24px; border-bottom: 3px solid #bdbdbd;">
+            <div style="display: flex; align-items: center;">
+                <img src="~/logo_receipt.png" style="border-radius: 50%; margin: 20px; width: 60px; height: 60px" alt="">
+                <h2>Emma's Small Engine</h2>
+            </div>
+
+            <div>
+                <div style="display: flex; flex-direction: column">
+                    <div style="height: 40px; position: relative">
+                        <div style="height: 20px; background-color: #3D4856; position: absolute; left: 15px; right: 0; top: -15px; z-index: 2;"></div>
+                        <p style="color: black; height: 40px; padding-left: 10px; background-color: #CAA007; position: absolute; left: 0; right: -100px; z-index: 3;">
+                            COGS Report
+                        </p>
+                        <div style="height: 22px; width: 17px; background-color: black; position: absolute; left: 6px; top: -13px; transform: rotate(45deg);"></div>
+                    </div>
+                </div>
+                <div class="position-relative">
+                    <p style="margin-bottom: 0;"><small>@Html.Raw(Model.StartDate.ToString("dddd, MMMM dd, yyyy"))</small></p>
+                    <p style="margin-bottom: 0;"><small>@Html.Raw(Model.EndDate.ToString("dddd, MMMM dd, yyyy"))</small></p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Raw Materials Summary -->
+        <div class="text-primary" style="margin-bottom: 16px; margin-top: 0px;"><strong>Raw Materials Summary</strong></div>
+        <table class="table table-sm table-responsive table-hover table-striped thead-dark table-borderless" style="border-bottom: 2px solid #CAA007;">
+            <tbody style="border-bottom: 1pt solid #bdbdbd">
+                
+                <tr>
+                    <td class="col-sm-9">
+                        @Html.DisplayNameFor(modelItem => Model.MaterialPeriodStart)
+                    </td>
+                    <td class="col-sm-3" align="right" style="border:none; padding-right: 2rem;">
+                        @Html.DisplayFor(modelItem => Model.MaterialPeriodStart)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-sm-9">
+                        @Html.DisplayNameFor(modelItem => Model.MaterialPeriodPurchase)
+                    </td>
+                    <td class="col-sm-3" align="right" style="border:none; padding-right: 2rem;">
+                        @Html.DisplayFor(modelItem => Model.MaterialPeriodPurchase)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-sm-9">
+                        @Html.DisplayNameFor(modelItem => Model.MaterialPeriodEnd)
+                    </td>
+                    <td class="col-sm-3" align="right" style="border:none; padding-right: 2rem;">
+                        @Html.DisplayFor(modelItem => Model.MaterialPeriodEnd)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-sm-9">
+                        @Html.DisplayNameFor(modelItem => Model.COGS)
+                    </td>
+                    <td class="col-sm-3" align="right" style="border:none; padding-right: 2rem;">
+                        @Html.DisplayFor(modelItem => Model.COGS)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-sm-9">
+                        @Html.DisplayNameFor(modelItem => Model.GrossProfit)
+                    </td>
+                    <td class="col-sm-3" align="right" style="border:none; padding-right: 2rem;">
+                        @Html.DisplayFor(modelItem => Model.GrossProfit)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-sm-9">
+                        @Html.DisplayNameFor(modelItem => Model.ProfitMargin)
+                    </td>
+                    <td class="col-sm-3" align="right" style="border:none; padding-right: 2rem;">
+                        @Html.DisplayFor(modelItem => Model.ProfitMargin)
+                    </td>
+                </tr>
+        </table>
+
+        <hr />
+        <p class="text-center">
+            Report generated at @Html.Raw(Model.TimeStamp.ToString("yyyy-MMMM-dd hh:mm tt"))
+        </p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>
+
+

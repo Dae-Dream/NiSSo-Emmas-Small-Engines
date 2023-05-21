@@ -1,0 +1,68 @@
+﻿@model Emmas_Small_Engines.Models.Inventory
+
+@{
+    ViewData["Title"] = "New Sale" ;
+}
+
+<h1>Create</h1>
+
+<h4>Inventory</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UPC" class="control-label"></label>
+                <input asp-for="UPC" class="form-control" />
+                <span asp-validation-for="UPC" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Size" class="control-label"></label>
+                <input asp-for="Size" class="form-control" />
+                <span asp-validation-for="Size" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Quantity" class="control-label"></label>
+                <input asp-for="Quantity" class="form-control" />
+                <span asp-validation-for="Quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AdjustPrice" class="control-label"></label>
+                <input asp-for="AdjustPrice" class="form-control" />
+                <span asp-validation-for="AdjustPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MarkupPrice" class="control-label"></label>
+                <input asp-for="MarkupPrice" class="form-control" />
+                <span asp-validation-for="MarkupPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Current" /> @Html.DisplayNameFor(model => model.Current)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Stock" class="control-label"></label>
+                <input asp-for="Stock" class="form-control" />
+                <span asp-validation-for="Stock" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

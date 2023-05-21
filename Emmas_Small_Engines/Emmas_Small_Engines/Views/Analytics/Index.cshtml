@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Emmas_Small_Engines.Models.SalesReport>;
+
+
+@{
+    ViewData["Title"] = "Analytics - Home";
+
+}
+<form asp-action="Index" asp-controller="Analytics" method="get" class="bg-light bg-gradient border-1 border-light p-4">
+
+
+    <div class="row ">
+        <div class="col-md-4">
+            <div class="card mt-4 shadow">
+                <div class="card-header">
+                    <h6 class="display-6 fs-5 text-center">Highlights</h6>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item list-group-item-action ">
+                            <button type="submit" name="actionButton" class="btn btn-link text-decoration-none">Top Employees</button>
+                        </li>
+                        @{
+                            try
+                            {
+                                int index = 0;
+                                while (index < 3)
+                                {
+                                    <li class="list-group-item flex-row" name="x-fields" id="@ViewBag.TopThree[index].EmpName" value="@ViewBag.TopThree[index].EmpSales">
+                                        <label>@ViewBag.TopThree[index].EmpName</label> <label name="y-fields" class="ms-5 text-success">@ViewBag.TopThree[index].EmpSales.ToString("C2")</label>
+                                    </li>
+                                    index++;
+                                }
+                            }catch(Exception e)
+                            {
+                                
+                            }
+                            
+                            
+                        }                                      
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        
+        </div>
+    
+        <div class="col-md-8">
+            <div class="card ms-auto mt-4 ">
+                <div class="card-header" >
+                    <h6 class="display-6 fs-5 text-center" id="chartHeading">Top Employees</h6>
+                </div>
+                <div class="card-body">
+                    <div>
+                        <canvas id="myChart" style="width: auto;"></canvas>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    
+    </div>
+</form>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    let XFields= document.getElementsByName("x-fields");
+    let YFields = document.getElementsByName("y-fields");
+</script>
+@section Scripts {
+    <script type="module" src="~/js/analytics.js"></script>
+  
+}

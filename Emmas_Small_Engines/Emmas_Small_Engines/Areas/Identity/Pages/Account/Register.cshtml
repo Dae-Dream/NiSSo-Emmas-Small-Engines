@@ -1,0 +1,72 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Admin - Register User";
+}
+<div class="d-flex flex-row rounded-top p-1 bg-light border mt-5 pt-5 gap-2">
+    <div class="col-auto  flex-grow-1">
+        <h6 class="display-6 ps-3">Administration - Register User</h6>
+    </div>
+    <div class="vr  align-self-center" style="height: 2.5rem"></div>
+    <div class="col-md-auto align-self-center">
+        <a title="Back" asp-controller="UserRoles" asp-action="Index" class="btn me-4 btn-outline-danger">Back</a>
+    </div>
+
+
+</div>
+<div class="container p-3 pt-5 pb-5  border rounded-bottom">
+    <div class="row">
+        
+        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="p-3 bg-light w-75 border rounded-2  mx-auto">
+            <div class="row d-inline-flex">
+                <div class="col-1">
+                    <div title="Info" class=" btn btn-link text-info" type="button" data-bs-target="#infoPane" data-bs-toggle="collapse" aria-expanded="false" aria-controls="infoPane">
+                        <i class="bi bi-info-circle-fill" style="font-size: 1.2rem;"></i>
+                    </div>
+                </div>
+                <div class="col-auto me-auto">
+                    <div class="collapse collapse-horizontal " id="infoPane">
+                        <div class="card card-body  bg-info text-white text-wrap" style="width: 600px; height: 80px;">
+                            <h6 class="display-6 fs-6 fw-bold">
+                             
+                                
+                                <ul>
+                                     <li>Password must be greater than 5 characters.</li>
+                                    <li>Password must have at least 1 unique character.</li>
+                                </ul>
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger text-center flex-grow-1"></div>
+            <div class="form-floating w-50 mx-auto">
+                <input asp-for="Input.Email" class="form-control "type="text" placeholder="Emailexample@hotmail.com" autocomplete="username" aria-required="true" />
+                <label asp-for="Input.Email"></label>
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="form-floating  w-50 mx-auto">
+                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" />
+                <label asp-for="Input.Password"></label>
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="form-floating  w-50 mx-auto">
+                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
+                <label asp-for="Input.ConfirmPassword"></label>
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+            <div class="row mt-4">
+                <button id="registerSubmit" type="submit" class=" btn btn-primary w-25 mx-auto">Register</button>
+
+            </div>
+        </form>
+    </div>
+    
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

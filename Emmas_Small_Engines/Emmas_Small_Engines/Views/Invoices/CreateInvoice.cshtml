@@ -1,0 +1,57 @@
+﻿@model Emmas_Small_Engines.Models.Invoice
+
+@{
+    ViewData["Title"] = "Create Invoice";
+}
+
+<h4>New Invoice</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateInvoice">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <!--
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Appreciation" class="control-label"></label>
+                <input asp-for="Appreciation" class="form-control" />
+                <span asp-validation-for="Appreciation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Subtotal" class="control-label"></label>
+                <input asp-for="Subtotal" class="form-control" />
+                <span asp-validation-for="Subtotal" class="text-danger"></span>
+            </div>
+            -->
+            <div class="form-group">
+                <label asp-for="CustomerID" class="control-label"></label>
+                <select asp-for="CustomerID" class="form-control" asp-items="ViewBag.CustomerID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmployeeID" class="control-label"></label>
+                <select asp-for="EmployeeID" class="form-control" asp-items="ViewBag.EmployeeID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <!--<span asp-validation-for="Description" class="text-danger"></span>-->
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+    <div class="col-sm-1">
+        <a href="@Url.Action("Create","Customers")" class="btn btn-primary">New Customer</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

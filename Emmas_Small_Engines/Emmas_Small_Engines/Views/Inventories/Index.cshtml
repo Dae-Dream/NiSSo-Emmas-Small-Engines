@@ -1,0 +1,124 @@
+﻿@model IEnumerable<Emmas_Small_Engines.Models.Inventory>
+
+@{
+    ViewData["Title"] = "Inventory Home";
+}
+<div class="d-flex flex-row gap-2" style="margin-top:180px;">
+    <div class="col-auto flex-grow-0">
+        <h5 class="display-5">Inventory</h5>
+    </div>  
+    <div class=" col-auto flex-grow-1">
+        <h5 class="d-inline display-5 text-muted">- Home</h5>
+    </div>
+    <div class="col-auto align-self-end ms-auto">
+        <a title="Add New Inventory Item" asp-action="Create" class="text-decoration-none"><i class="bi bi-house-add-fill" style="font-size: 2rem;"></i></a>
+    </div>
+    <div class="vr mb-2 align-self-end" style="height: 2rem"></div>
+    <div class="col-md-auto  align-self-end">
+        
+        <a title="New Order Request" asp-action="Create" asp-controller="OrderRequests" class="text-decoration-none text-opacity-50 btn-link"><i class="bi bi-file-earmark-plus-fill" style="font-size: 2rem;"></i></a>
+    </div>
+</div>
+<hr class="mb-5 mt-0" />
+<div class="container shadow mt-5 pb-2 bg-light bg-gradient">
+    <form asp-action="Index" method="get">
+        <input type="hidden" name="sortDirection" value="@ViewData["sortDirection"]" />
+        <input type="hidden" name="sortField" value="@ViewData["sortField"]" />
+   
+        <div class="form-horizontal d-flex justify-content-center w-100">
+            <div class="row mx-5 bg-light">
+                <div class="col-md-5 form-group text-nowrap mt-5 mb-2 " style="width: 500px;">
+                    <label>Search Inventory:</label>
+                    @Html.TextBox("searchString", null, new { @class = "form-control mb-3 mt-1", @placeholder="Search by Item Name" })
+                </div>
+                <div class="col-auto me-auto align-self-end form-group">
+                    <input type="submit" name="actionButton" value="Filter" class="btn btn-outline-primary mb-2" />
+                    <a asp-action="Index" class="btn btn-outline-danger mb-2">Clear</a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        <table class="table w-75 mx-auto text-center text-nowrap table-striped shadow ">
+            <thead class="bg-dark align-middle">
+                <tr>
+                    <th>
+                        <input type="submit" title="Sort by UPC" name="actionButton" value="UPC" class="btn btn-link link-light" />
+                    </th>               
+                    <th>
+                        <input type="submit" title="Sort by Name" name="actionButton" value="Name" class="btn btn-link link-light" />
+                    </th>
+                    <th>
+                            <input type="submit" disabled="disabled" value="Size" class="btn btn-link link-light" />
+                    </th>
+                    <th>
+                            <input type="submit" disabled="disabled" value="Quantity" class="btn btn-link link-light" />
+                    </th>
+                    <th>
+                        <input type="submit" title="Sort by UPC" name="actionButton" value="Adjust Price" class="btn btn-link link-light" />
+                    </th>
+                    <th>
+                        <input type="submit" title="Sort by Markup Price" name="actionButton" value="Markup Price" class="btn btn-link link-light" />
+                    </th>
+                    <th>
+                        <input type="submit" title="Sort by Current" name="actionButton" value="Current" class="btn btn-link link-light" />
+                    </th>
+                    <th>
+                        <input type="submit" title="Sort by Stock" name="actionButton" value="Stock" class="btn btn-link link-light" />
+                    </th>
+                    <th></th>
+                    <th>
+                            <input type="submit" disabled="disabled" value="Actions" class="btn btn-link link-light" />
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="bg-light">
+                @foreach (var item in Model) {
+                    <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UPCFormatted)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Size)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Quantity)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AdjustPrice)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MarkupPrice)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Current)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Stock)
+                            <td>
+                            <td>
+                                <a title="Edit" asp-action="Edit" asp-route-id="@item.UPC" class="text-decoration-none text-warning-emphasis">
+                                    <i class="bi bi-pencil-fill" style="font-size: 1rem;"></i>
+                                </a> |
+                                <a title="Delete" asp-action="Delete" asp-route-id="@item.UPC" class="text-decoration-none text-danger">
+                                    <i class="bi-trash3-fill" style="font-size: 1rem;"></i>
+                                </a> 
+                                <!----- REMOVED VIEW/DETAILS OPTION AS PER INSTRUCTOR SUGGESTION-----
+                                    |
+                                <a title="Details" asp-action="Details" asp-route-id="item.UPC" class="text-decoration-none text-primary">
+                                    <i class="bi bi-eye-fill" style="font-size: 1rem;"></i>
+                                </a>--> 
+                                
+                            </td>
+                    </tr>
+                    
+                }
+            </tbody>
+        </table>            
+        <partial name="_PagingNavBar" />
+    </form>
+</div>

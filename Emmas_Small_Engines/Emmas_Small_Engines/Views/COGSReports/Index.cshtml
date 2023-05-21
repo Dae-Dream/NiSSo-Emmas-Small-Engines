@@ -1,0 +1,149 @@
+﻿@model IEnumerable<Emmas_Small_Engines.Models.COGSReport>
+
+@{
+    ViewData["Title"] = "COGS Reports";
+}
+
+<div class="container shadow mt-5 pt-2 pb-2 bg-light bg-gradient">
+
+    <!-- Create section-->
+    <h6 class="display-6 fs-5 text-center my-3">Create Report:</h6>
+    <div class="form-horizontal  p-3 mt-3 mb-2">
+        <form asp-action="AddReport" asp-controller="COGSReports" method="post">
+            <div class="row w-75 mx-auto border border-1 p-3 rounded-2 border-secondary bg-light bg-gradient">
+                <div class="col-md-4">
+
+                    <span>
+                        <input type="text" id="cogName" name="cogName" class="form-control mt-4" value="Default Report Name" required>
+                    </span>
+                    <span >
+                        @Html.DropDownList("crepCriteria", null, "All Inventory", htmlAttributes: new { @class = "form-select mt-4" })
+                    </span>
+                </div>
+                <div class="col-md-4 text-nowrap">
+                    <span >
+                        <input type="text" id="purchases" name="purchases" placeholder="Period Purchase Amount" class="form-control mt-4" value="" required>
+                    </span>
+                    <span >
+                        <input type="text" id="endTotal" name="endTotal" class="form-control mt-4" placeholder="Period End Total" value="" required>
+                    </span>
+                </div>
+                <div class="col-md-4">
+                   
+                    <div class=" input-group text-center mt-4">
+                        
+                        <span class="input-group-text">
+                            <h6 class="display-6 fs-6">From</h6>
+                        </span>
+                        <input type="date" id="StartDate" name="StartDate" class="form-control" value="2010-01-01" required>
+                    </div>
+                    <div class="input-group text-center  mt-4">
+
+                        <span class="input-group-text">
+                            <h6 class="display-6 fs-6" >To</h6>
+                        </span>
+                        <input type="date" id="EndDate" name="EndDate" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-dd")" required>
+                    </div>
+                   
+                </div>
+                <div class="row mt-3 mb-1 ">
+                    <div class="form-group d-flex justify-content-center text-nowrap">
+                        <input type="submit" value="Save" name="actionButton" class="btn text-white btn-primary btn-sm me-3" />
+                        <input type="submit" value="Save and Print" name="actionButton" class="btn btn-info text-white btn-sm" />
+                    </div>
+                </div>
+
+            </div>
+        
+            
+
+        </form>
+    </div>
+    <div class="row">
+        <form asp-action="Index" method="get">
+            <input type="hidden" name="sortDirection" value="@ViewData["sortDirection"]" />
+            <input type="hidden" name="sortField" value="@ViewData["sortField"]" />
+
+            <div class="row d-flex justify-content-center ms-5">
+                <div class="col-md-6 form-group">
+                    @Html.TextBox("searchString", null, new { @class = "form-control mb-2 mt-1", placeholder="Search by Report Name"})
+                </div>
+                <div class="col-md-4 align-items-end form-group">
+                    <input type="submit" name="actionButton" value="Search" class="btn btn-outline-primary" />
+                    <a asp-action="Index" class="btn btn-outline-danger">Clear</a>
+                </div>
+                
+            </div>
+            <label style="color:red">@ViewBag.err</label>
+            <table class="table w-75 mx-auto text-center text-nowrap table-striped shadow">
+                <thead class="bg-dark align-middle">
+                    <tr>
+                        <th>
+                            <input type="submit" name="actionButton" value="@Html.DisplayNameFor(model => model.cogName)" class="btn btn-link link-light" />
+                        </th>
+                        <th>
+                            <input type="submit" name="actionButton" value="@Html.DisplayNameFor(model => model.StartDate)" class="btn btn-link link-light" />
+                        </th>
+                        <th>
+                            <input type="submit" name="actionButton" value="@Html.DisplayNameFor(model => model.EndDate)" class="btn btn-link link-light" />
+                        </th>
+                        <th>
+                            <input type="submit" name="actionButton" value="@Html.DisplayNameFor(model => model.crepCriteria)" class="btn btn-link link-light" />
+                        </th>
+                        <th>
+                            <input type="submit" name="actionButton" value="@Html.DisplayNameFor(model => model.TimeStamp)" class="btn btn-link link-light" />
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody class="bg-light">
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.cogName)
+                            </td>
+                            <td>
+                                @Html.Raw(item.StartDate.ToString("yyyy-MMM-dd"))
+                            </td>
+                            <td>
+                                @Html.Raw(item.EndDate.ToString("yyyy-MMM-dd"))
+                            </td>
+                            <td>
+                                @{
+                                    if (item.crepCriteria is null)
+                                    {
+                                        int invCount = ViewBag.invNames.Count;
+                                        string firstLine = "All Inventory";
+                                        @firstLine
+
+                                    }
+                                    else
+                                    {
+                                        @Html.DisplayFor(modelItem => item.crepCriteria)
+                                    }
+                                }
+                            </td>
+                            <td>
+                                @Html.Raw(item.TimeStamp.ToString("yyyy-MMM-dd hh:mm tt"))
+                            </td>
+                            <td>
+                                <a asp-action="COGSReport" asp-route-id="@item.ID" class="btn btn-outline-primary btn-sm">View Report</a>
+                                <a asp-action="Delete" asp-route-id="@item.ID" class="btn btn-outline-danger btn-sm">Remove</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+            <partial name="_PagingNavBar" />
+        </form>
+    </div>
+    
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

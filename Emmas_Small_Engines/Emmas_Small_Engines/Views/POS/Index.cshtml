@@ -1,0 +1,311 @@
+@model IEnumerable<Emmas_Small_Engines.Models.Inventory>
+
+@{
+
+	ViewData["Title"] = " Sales New";
+}
+
+<div class="d-flex flex-row gap-2">
+	<div class="col-auto align-items-end flex-grow-1">
+		<h4 class="display-4 mt-5">Sales</h4>
+	</div>
+	<div class="col-auto align-self-end ms-auto">
+		<label class="display-6" style="font-size: 18px;">Customer:</label>
+		@Html.DropDownList("CustomerID", ViewData["CustomerID"] as SelectList)
+		<!--
+		<select name="CustomerID" class="form-select form-select-sm" style="height:30px;" asp-items="(SelectList)@ViewData["CustomerID"]">
+			<option class="text-muted fs-6">Select a Customer</option>
+		</select>
+		-->
+		<!--<span asp-validation-for="CustomerID" class="text-danger"></span>-->
+	</div>
+	<div class="vr align-self-end" style="height: 2rem"></div>
+	<div class="col-md-auto align-self-end ">
+		<label class="display-6" style="font-size: 18px;">Employee:</label>
+		@Html.DropDownList("EmployeeID", ViewData["EmployeeID"] as SelectList)
+		<!--
+		<select name="EmployeeID" class="form-select form-select-sm" style="height:30px;" asp-items="(SelectList)@ViewData["EmployeeID"]">
+			<option class="text-muted fs-6">Select an Employee</option>
+		</select>
+		-->
+	</div>
+</div>
+<hr class="mb-2 mt-1" />
+<div class="d-flex row w-100">
+	<div class="row">
+		<div class="col-md-6 me-5">
+			<form>
+				<div class="row bg-dark bg-gradient">
+
+					<div class="form-group col-md-9">
+						<h5 class="display-6 fs-6 pt-2 text-white">Search Products By Name</h5>
+						@Html.TextBox("searchString", null, new { @class = "form-control form-control-sm", @placeholder="eg. Air Filter, air filter etc .." })
+					</div>
+					<div class="form-group col-md-3 align-self-end">
+						<input type="submit" name="actionButton" value="Filter" class="btn btn-sm btn-primary" />
+						<a asp-action="Index" class="btn btn-sm btn-danger">Clear</a>
+					</div>
+
+				</div>
+			</form>
+			<div class="row">
+
+				<table class="table table-striped pt-2 ">
+					<thead class="bg-dark text-white align-middle ">
+						<tr>
+							<th style="width: 100px;">
+								@Html.DisplayNameFor(model => model.UPCFormatted)
+							</th>
+							<th>
+								@Html.DisplayNameFor(model => model.Name)
+							</th>
+							<th>
+								@Html.DisplayNameFor(model => model.Size)
+							</th>
+							<th>
+								@Html.DisplayNameFor(model => model.MarkupPrice)
+							</th>
+							<th>
+								@Html.DisplayNameFor(model => model.Stock)
+							</th>
+							<th>
+								Actions
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach (var item in Model)
+						{
+							<tr>
+								<td>
+									@Html.DisplayFor(modelitem => item.UPCFormatted)
+								</td>
+								<td>
+									@Html.DisplayFor(modelItem => item.Name)
+								</td>
+								<td>
+									@Html.DisplayFor(modelItem => item.Size)
+								</td>
+								<td>
+									@Html.DisplayFor(modelItem => item.MarkupPrice)
+								</td>
+								<td>
+									@Html.DisplayFor(modelItem => item.Stock)
+								</td>
+								<td>
+									<form method="post" asp-action="AddToCart" asp-controller="POS">
+										<input type="hidden" name="upc" value="@item.UPC" />
+										<button class="btn btn-link" type="submit"><i class="bi bi-plus-lg text-success"></i></button>
+									</form>
+								</td>
+							</tr>
+						}
+
+					</tbody>
+
+				</table>
+				<form asp-action="Index" method="get">
+					<input type="hidden" name="sortDirection" value="@ViewData["sortDirection"]" />
+					<input type="hidden" name="sortField" value="@ViewData["sortField"]" />
+					<partial name="_PagingNavBar" />
+				</form>
+			</div>
+		</div>
+
+		<div class="col-md-5 ms-auto">
+			<div class="row border bg-light" style="height: 300px; overflow: auto;">
+				<table class="table text-nowrap table-striped ">
+
+					<thead class="bg-dark bg-gradient display-6 fs-6 text-white text-center align-middle">
+
+						<tr>
+							<th>
+								<h6>@Html.DisplayNameFor(model => model.Name)</h6>
+							</th>
+							<th>
+								<h6>@Html.DisplayNameFor(model => model.MarkupPrice)</h6>
+							</th>
+							<th>
+								<h6>Quantity</h6>
+							</th>
+							<th>
+								<h6>Actions</h6>
+							</th>
+						</tr>
+					</thead>
+					<tbody id="tableTracker">
+						@if (ViewBag.model != null)
+						{
+							int count = 0;
+							@foreach (var item in ViewBag.model)
+							{
+
+								<tr class=" bg-light bg-gradient" style="height:30px;">
+									<td>
+										@item.Inventory.Name
+									</td>
+									<td>
+										@item.Price.ToString("C")
+									</td>
+									<td>
+										<form method="post" asp-action="UpdateQuantity">
+											<div class="input-group input-group-sm ">
+												<input type="hidden" name="upc" value="@item.InventoryUPC" />
+												<span class="input-group-text" style="height: 30px;">
+													<button type="submit" id="reduceQuantity-@count" title="Reduce Quantity" asp-action="UpdateQuantity" asp-route-id="@item.InventoryUPC" class="btn btn-link text-decoration-none">-</button>
+												</span>
+												<input type="text" class="form-control" id="quantity-@count" name="quantity" value="@item.OrderQuantity" style="height: 30px;" />
+												<span class="input-group-text" style="height: 30px;">
+													<button type="submit" id="increaseQuantity-@count" title="Increase Quantity" asp-action="UpdateQuantity" asp-route-id="@item.InventoryUPC" class="btn btn-link text-decoration-none">+</button>
+												</span>
+											</div>
+
+										</form>
+									</td>
+									<td>
+										<form method="post" asp-action="RemoveFromCart" asp-controller="POS">
+											<input type="hidden" name="upc" value="@item.Inventory.UPC" />
+											<button title="Remove from Cart" asp-action="RemoveFromCart" asp-route-id="@item.Inventory.UPC" class="btn btn-link text-danger">
+												<i class="bi-trash3-fill" style="font-size: 1rem;"></i>
+											</button>
+										</form>
+									</td>
+								</tr>
+								count++;
+							}
+						}
+					</tbody>
+				</table>
+			</div>
+			<div class="row p-2 border mt-1 bg-light shadow-lg">
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text">Sub Total $ </span>
+					<input type="text" class="form-control" name="paymentAmt" placeholder="Enter Amount Here..." value="@ViewBag.Subtotal" />
+				</div>
+
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text">Tax </span>
+					<input type="text" class="form-control" name="paymentAmt" placeholder="Enter Amount Here..." value="@ViewBag.Tax" />
+				</div>
+
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text">Total $ </span>
+					<input type="text" class="form-control" name="paymentAmt" placeholder="Enter Amount Here..." value="@ViewBag.Total" />
+				</div>
+
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text">Paid $ </span>
+					<input type="text" class="form-control" name="paymentAmt" placeholder="Enter Amount Paid ..." value="@ViewBag.Paid.ToString("C")" />
+				</div>
+
+				<div class="input-group input-group-sm mb-3">
+					<span class="input-group-text">Change $ </span>
+					<input type="text" class="form-control" name="paymentAmt" placeholder="Enter Amount Here..." value="@ViewBag.Change.ToString("C")" />
+				</div>
+
+			</div>
+			<div class="row mt-1 border bg-light">
+				<label class="bg-dark text-white">Payment Type: @ViewBag.Payment</label><br />
+				<form>
+					<div class="d-flex mt-3 flex-row justify-content-around">
+
+						@{
+							if (ViewBag.Payment == "Cash")
+							{
+								<button class="btn btn-sm btn-warning " name="payType" value="CASH" asp-action="Cash" asp-controller="POS">CASH</button>
+								<button class="btn btn-sm btn-outline-warning " name="payType" value="CREDIT" asp-action="Credit" asp-controller="POS">CREDIT</button>
+								<button class="btn btn-sm btn-outline-warning " name="payType" value="DEBIT" asp-action="Debit" asp-controller="POS">DEBIT</button>
+								<button class="btn btn-sm btn-outline-warning " name="payType" value="CHEQUE" asp-action="Cheque" asp-controller="POS">CHEQUE</button>
+							}
+							else if (ViewBag.Payment == "Credit")
+							{
+								<button class="btn btn-sm btn-outline-warning " name="payType" value="CASH" asp-action="Cash" asp-controller="POS">CASH</button>
+								<button class="btn btn-sm btn-warning " name="payType" value="CREDIT" asp-action="Credit" asp-controller="POS">CREDIT</button>
+								<button class="btn btn-sm btn-outline-warning " name="payType" value="DEBIT" asp-action="Debit" asp-controller="POS">DEBIT</button>
+								<button class="btn btn-sm btn-outline-warning " name="payType" value="CHEQUE" asp-action="Cheque" asp-controller="POS">CHEQUE</button>
+							}
+							else if (ViewBag.Payment == "Debit")
+							{
+								<button class="btn btn-sm btn-outline-warning " name="payType" value="CASH" asp-action="Cash" asp-controller="POS">CASH</button>
+								<button class="btn btn-sm btn-outline-warning " name="payType" value="CREDIT" asp-action="Credit" asp-controller="POS">CREDIT</button>
+								<button class="btn btn-sm btn-warning " name="payType" value="DEBIT" asp-action="Debit" asp-controller="POS">DEBIT</button>
+								<button class="btn btn-sm btn-outline-warning " name="payType" value="CHEQUE" asp-action="Cheque" asp-controller="POS">CHEQUE</button>
+							}
+							else if (ViewBag.Payment == "Cheque")
+							{
+								<button class="btn btn-sm btn-outline-warning " name="payType" value="CASH" asp-action="Cash" asp-controller="POS">CASH</button>
+								<button class="btn btn-sm btn-outline-warning " name="payType" value="CREDIT" asp-action="Credit" asp-controller="POS">CREDIT</button>
+								<button class="btn btn-sm btn-outline-warning " name="payType" value="DEBIT" asp-action="Debit" asp-controller="POS">DEBIT</button>
+								<button class="btn btn-sm btn-warning " name="payType" value="CHEQUE" asp-action="Cheque" asp-controller="POS">CHEQUE</button>
+							}
+						}
+
+					</div>
+					<br />
+				</form>
+				<div class="row mx-auto">
+					<form method="post" asp-action="Checkout" asp-controller="POS">
+						<div class="input-group  input-group-sm mb-3">
+							<span class="input-group-text">Payment Amount $ </span>
+							<input type="text" class="form-control" name="paymentAmt" placeholder="Enter Amount Here..." />
+						</div>
+						<div class="row mt-5 mb-1 text-center ">
+							<label style="color:red">@ViewBag.errMsg</label>
+						</div>
+						<div class="form-group d-flex justify-content-center ">
+							<button class="btn btn-outline-success rounded-2 me-3" name="checkoutBtn" type="submit">@ViewBag.custCheck</button>
+							<button class="btn btn-outline-danger rounded-2" type="submit" asp-action="Clear" asp-asp-controller="POS">Clear</button>
+						</div>
+					</form>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+@section Scripts {
+	<script src="~/js/posScripts.js"></script>
+
+	<script>
+		var checkoutButton = document.querySelector('button[name="checkoutBtn"]');
+		checkoutButton.addEventListener('click', function () {
+			var selectedCustValue = document.getElementById('CustomerID').value;
+			var selectedEmpValue = document.getElementById('EmployeeID').value;
+
+			var hiddenInput = document.createElement('input');
+			hiddenInput.type = 'hidden';
+			hiddenInput.name = 'SelectedCustID';
+			hiddenInput.value = selectedCustValue;
+			(this).form.appendChild(hiddenInput);
+
+			var hiddenInput1 = document.createElement('input');
+			hiddenInput1.type = 'hidden';
+			hiddenInput1.name = 'SelectedEmpID';
+			hiddenInput1.value = selectedEmpValue;
+			(this).form.appendChild(hiddenInput1);
+		});
+	</script>
+	<script>
+		var selectedValue = localStorage.getItem('selectedCustomerID');
+		var selectedValue1 = localStorage.getItem('selectedEmployeeID');
+
+		if (selectedValue) {
+			document.getElementById('CustomerID').value = selectedValue;
+		}
+
+		if (selectedValue1) {
+			document.getElementById('EmployeeID').value = selectedValue1;
+		}
+
+		var ddl = document.getElementById('CustomerID');
+		var ddl1 = document.getElementById('EmployeeID');
+
+		ddl.addEventListener('change', function () {
+			localStorage.setItem('selectedCustomerID', this.value);
+		});
+		ddl1.addEventListener('change', function () {
+			localStorage.setItem('selectedEmployeeID', this.value);
+		});
+	</script>
+}

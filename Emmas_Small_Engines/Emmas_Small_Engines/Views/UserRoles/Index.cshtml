@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Emmas_Small_Engines.Views.ViewModels.UserVM>
+
+@{
+    ViewBag.Title = "Admin - Home";
+    ViewData["ControllerName"]= this.ViewContext.RouteData.Values["controller"].ToString();
+}
+<div class="d-flex flex-row gap-2" style="margin-top:80px;">
+    <div class="col-auto flex-grow-0">
+        <h5 class="display-5">Administration</h5>
+    </div>
+    <div class=" col-auto flex-grow-1">
+        <h5 class="d-inline display-5 text-muted">- Home</h5>
+    </div>
+    <div class="vr  align-self-center" style="height: 2.5rem"></div>
+    <div class="col-md-auto align-self-center">
+        <a title="Register New User" asp-area="Identity" asp-page="/Account/Register" class="text-decoration-none link-primary">
+            <i class="bi bi-person-badge-fill" style="font-size: 2rem;"></i>
+        </a>
+    </div>
+</div>
+
+
+<hr class="mb-5 mt-0" />
+<div class="container shadow p-4 bg-light bg-gradient">
+   
+    <table class="table w-75 table-sm table-striped  text-center mx-auto border">
+        <thead class="bg-dark text-white">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserRoles)
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+        </thead>
+
+        <tbody class="bg-light">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    <td>
+                        @{
+                            foreach (var r in item.UserRoles)
+                            {
+                                @:  @r <br />
+                            }
+                        }
+                    </td>
+                    <td>
+                        <a title="Edit Role" asp-controller="UserRoles" asp-action="Edit" asp-route-id="@item.Id" class="text-decoration-none link-warning">
+                            <i class="bi bi-person-fill-gear" style="font-size: 1.5rem;"></i>                           
+                        </a>
+                        <!--Html.ActionLink("Edit", "Edit", new { id = item.Id }, new {class = "btn btn-sm btn-warning text-white"})-->
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+    
+</div>
